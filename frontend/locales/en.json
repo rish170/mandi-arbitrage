@@ -46,9 +46,31 @@
     "vehicle": "Transport Vehicle",
     "quality": "Quality Grade",
     "submit": "Calculate Net Profit",
-    "loading": "Comparing mandis..."
+    "loading": "Comparing mandis...",
+    "modePincode": "Pincode",
+    "modeDistrict": "State + District",
+    "state": "State",
+    "district": "District",
+    "selectDistrict": "Select District",
+    "customPctLabel": "Custom deduction (%)",
+    "advanced": "Advanced Rates & Fees",
+    "marketFee": "Market Fee (%)",
+    "commission": "Commission Agent (%)",
+    "ratePerKm": "Transport Rate (₹/km)",
+    "includeOtherCharges": "Include loading & weighing charges (₹4/q)",
+    "assumptionsBadge": "Rates are editable assumptions",
+    "validation": {
+      "invalidPincode": "Please enter a valid 6-digit Indian pincode (e.g. 440001)",
+      "selectDistrict": "Please select a district",
+      "selectCrop": "Please select a crop",
+      "invalidQuantity": "Quantity must be greater than 0 quintals",
+      "invalidCustomPct": "Custom cut must be between 0% and 30%"
+    }
   },
   "results": {
+    "title": "Mandi Comparison Results",
+    "headlineDiff": "Selling at {bestMandi} instead of {nearestMandi} earns you {extraQ} more per quintal ({extraTotal} on your {qty} quintals)",
+    "headlineSame": "{bestMandi} is both your nearest mandi and gives your highest net profit of {netQ} per quintal ({netTotal} total)",
     "bestMandi": "Best Mandi",
     "nearestMandi": "Nearest Mandi",
     "extraProfit": "Extra Net Profit",
@@ -58,7 +80,55 @@
     "transportCost": "Transport Cost",
     "mandiFee": "APMC Fee & Cess",
     "breakdown": "Cost Breakdown",
-    "trend": "7-Day Price Trend"
+    "trend": "7-Day Price Trend",
+    "bestBadge": "Best Choice",
+    "nearestBadge": "Nearest",
+    "fallbackTag": "Approx Distance",
+    "staleTag": "Old Price",
+    "rank": "Rank",
+    "mandi": "Mandi",
+    "price": "Mandi Price",
+    "netPerQ": "Net / q",
+    "netTotal": "Total Net",
+    "deltaVsNearest": "vs Nearest",
+    "qualityCut": "Quality Cut",
+    "sortRank": "Rank",
+    "sortNet": "Net Profit",
+    "sortDist": "Distance",
+    "sortPrice": "Gross Price"
+  },
+  "trend": {
+    "title": "7-Day Modal Price Trend (₹/q)",
+    "subtitle": "Daily modal auction prices recorded by APMCs. Missing dates indicate market holidays or closures.",
+    "seededNote": "Dashed points indicate demo history pending 7 days of live snapshots.",
+    "noData": "Historical price trend is not available for the selected mandis."
+  },
+  "warnings": {
+    "STALE_PRICE": "Some mandi rates are 2–3 days old due to delayed APMC publishing.",
+    "DISTANCE_FALLBACK": "Road distances were calculated using straight-line road factor approximation.",
+    "GEOCODE_FALLBACK": "Origin location coordinates were resolved using OpenStreetMap fallback.",
+    "FEWER_THAN_LIMIT": "Fewer mandis than requested had active prices within the search radius.",
+    "NO_PRICE_DATA": "No prices were reported by nearby mandis within the past 3 days.",
+    "ASSUMED_RATES": "Calculations use unverified baseline assumptions for freight and statutory fees. Adjust in Advanced settings."
+  },
+  "states": {
+    "loading": "Connecting to database...",
+    "wakingUp": "Connecting to backend server... First request may take a few seconds to wake up.",
+    "empty": "No active mandis found within radius for this commodity.",
+    "error": "An error occurred while comparing mandis. Please try again.",
+    "retry": "Retry Comparison"
+  },
+  "methodology": {
+    "title": "Calculation Methodology & Formula",
+    "subtitle": "Transparent, verifiable mathematical model for agricultural produce net realization.",
+    "formulaTitle": "The Net Profit Formula",
+    "formulaStep1": "1. Realized Price = Modal Auction Price × (1 - Quality Cut %)",
+    "formulaStep2": "2. Statutory Fees = Realized Price × (Market Fee % + Commission %)",
+    "formulaStep3": "3. Transport Cost = ⌈Quantity / Vehicle Capacity⌉ × Rate/km × Distance",
+    "formulaStep4": "4. Net Realization = Realized Price - Statutory Fees - Transport Cost - Handling",
+    "sourcesTitle": "Official Data Sources",
+    "assumptionsTitle": "Assumptions & Estimates",
+    "limitationsTitle": "Practical Limitations"
   },
   "footer": {
     "disclaimer": "Prices shown are indicative modal auction rates from data.gov.in.",
