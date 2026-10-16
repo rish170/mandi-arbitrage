@@ -38,3 +38,19 @@ Every backend dependency added to `backend/requirements.txt` has a specific, min
 ### D-005: Money Arithmetic with Python Decimal (Rule R4)
 - **Decision**: All financial and quantity mathematics strictly utilize Python `Decimal`. Floating-point arithmetic is forbidden in calculations.
 - **Rationale**: Guarantees zero precision loss in currency and quintal divisions, rounding strictly at the presentation boundary to 2 decimal places.
+
+---
+
+## 2026-10-17: Phase 2 Data Layer Verification
+
+### D-006: data.gov.in Mandi Price Resource Verification & Historical Probe
+- **Live Verification**:
+  - Resource ID tested: `9ef84268-d588-465a-a308-a864a43d0070` ("Current Daily Price of Various Commodities from Various Markets (Mandi)").
+  - Total records currently active for Maharashtra: 1,096 records across diverse commodities and APMC markets.
+  - Active field schema: `state`, `district`, `market`, `commodity`, `variety`, `grade`, `arrival_date`, `min_price`, `max_price`, `modal_price`.
+  - Date format returned: `dd/mm/yyyy` (e.g., `16/10/2026`).
+- **History Probe Findings**:
+  - We probed `filters[arrival_date]` for prior dates (`15/10/2026`, `14/10/2026`, `10/10/2026`, etc.).
+  - Result: The API returns the exact same count and records for the current day (`16/10/2026`). The upstream CKAN resource operates as a point-in-time daily snapshot, overwriting or retaining only current daily arrivals.
+  - Conclusion: Historical backfill via the API is **not supported** by this data.gov.in resource. Daily history must accumulate via our twice-daily automated ingestion job storing persistent daily snapshots in our local database.
+  - For historical trend charts prior to local accumulation, `scripts/seed_demo_history.py` will generate flagged demo series (`is_seeded=true`, source `demo_seed`) using bounded random walk, ensuring transparent labeling.

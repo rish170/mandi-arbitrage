@@ -1,0 +1,1353 @@
+{
+  "maharashtra:buldhana:apmc chikali": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:sindi (selu)": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc mukhed": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc kinwat": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc nasik": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc manmad": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc nandgaon": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc sinner": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc devala": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc anajngaon": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:nashik:lasalgaon(vinchur)": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc nampur": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:beed:apmc gevrai": {
+    "lat": 18.9918442,
+    "lng": 75.909784,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:parbhani:apmc parbhani": {
+    "lat": 19.2901981,
+    "lng": 76.6026443,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:pimpalgaon baswant(saykheda)": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:apmc pune": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:apmc deoulgaon raja": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:apmc khed": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc lasalgaon": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nagpur:apmc hingna": {
+    "lat": 21.1498134,
+    "lng": 79.0820556,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:junnar(otur)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:khed(chakan)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:junnar(narayangaon)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:pune(manjri)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:pune(moshi)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:raigad:apmc panvel": {
+    "lat": 18.4928092,
+    "lng": 73.138071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc ahilyanagar": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ratnagiri:apmc ratnagiri (nachane)": {
+    "lat": 17.2826079,
+    "lng": 73.4569787,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:sangli:apmc sangli": {
+    "lat": 17.1726928,
+    "lng": 74.5867654,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nagpur:apmc kalmeshwar": {
+    "lat": 21.1498134,
+    "lng": 79.0820556,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:sangli:apmc tasgaon": {
+    "lat": 17.1726928,
+    "lng": 74.5867654,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:sangli:apmc vita": {
+    "lat": 17.1726928,
+    "lng": 74.5867654,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:sangli:apmc palus": {
+    "lat": 17.1726928,
+    "lng": 74.5867654,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:satara:apmc vai": {
+    "lat": 17.6361289,
+    "lng": 74.2982781,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:satara:apmc patan": {
+    "lat": 17.6361289,
+    "lng": 74.2982781,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc solapur": {
+    "lat": 17.6799325,
+    "lng": 75.927467,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 5.6024261844770236e-05,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc sangola": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc karmala": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc mangal wedha": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc akluj": {
+    "lat": 17.8935101,
+    "lng": 75.0121678,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 3.750133516437045e-05,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc hinganghat": {
+    "lat": 20.5340174,
+    "lng": 78.8327986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 3.80018310825821e-05,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc pulgaon": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc sindi": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:washim:apmc karanja": {
+    "lat": 20.2874178,
+    "lng": 77.2369655,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:washim:apmc washim": {
+    "lat": 20.2874178,
+    "lng": 77.2369655,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc mahagaon": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc umarkhed": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc digras": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:umarked(danki)": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc shrirampur": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc karjat": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:karjat(rashin)": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:akola:apmc akola": {
+    "lat": 20.7618122,
+    "lng": 77.1921157,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc amarawati": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:amrawati(frui & veg. market)": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:beed:apmc majalgaon": {
+    "lat": 18.9918442,
+    "lng": 75.909784,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:apmc khamgaon": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:apmc malkapur": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:apmc lonar": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc chandrapur": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chattrapati sambhajinagar:apmc chattrapati sambhajinagar": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:chattrapati sambhajinagar:apmc paithan": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:dharashiv:apmc dharashiv": {
+    "lat": 18.169844,
+    "lng": 76.1179632,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:dharashiv:apmc tuljapur": {
+    "lat": 18.169844,
+    "lng": 76.1179632,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:gondiya:apmc tiroda": {
+    "lat": 21.1456285,
+    "lng": 80.2683867,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:apmc bhusaval": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:apmc  yawal": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:pachora(bhadgaon)": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalna:apmc jalana": {
+    "lat": 19.918833,
+    "lng": 75.8708599,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalna:apmc partur": {
+    "lat": 19.918833,
+    "lng": 75.8708599,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:rahuri(vambori)": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc achalpur": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:latur:apmc ahmedpur": {
+    "lat": 18.3553347,
+    "lng": 76.7548997,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:kolhapur:kolhapur(laxmipuri)": {
+    "lat": 16.7028412,
+    "lng": 74.2405329,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:latur:apmc  latur": {
+    "lat": 18.3553347,
+    "lng": 76.7548997,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:mumbai:apmc mumbai": {
+    "lat": 19.054999,
+    "lng": 72.8692035,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nagpur:apmc nagpur": {
+    "lat": 21.1498134,
+    "lng": 79.0820556,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nagpur:apmc savner": {
+    "lat": 21.1498134,
+    "lng": 79.0820556,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc bhokar": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:beed:apmc kille dharur": {
+    "lat": 18.9918442,
+    "lng": 75.909784,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc sangamner": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:kolhapur:apmc vadgaonpeth": {
+    "lat": 16.7028412,
+    "lng": 74.2405329,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc jamkhed": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:beed:apmc patoda": {
+    "lat": 18.9918442,
+    "lng": 75.909784,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc savali": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:pune(pimpri)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc mudkhed": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:hadgaon(tamsa)": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nandurbar:apmc taloda": {
+    "lat": 21.5141622,
+    "lng": 74.5405513,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc yeola": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalna:apmc ambad (vadigodri)": {
+    "lat": 19.918833,
+    "lng": 75.8708599,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:lasalgaon(niphad)": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc loha": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:palghar:apmc  vasai": {
+    "lat": 19.757249,
+    "lng": 73.0931199,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:palghar:apmc palghar": {
+    "lat": 19.757249,
+    "lng": 73.0931199,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:parbhani:apmc gangakhed": {
+    "lat": 19.2901981,
+    "lng": 76.6026443,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:beed:apmc beed": {
+    "lat": 18.9918442,
+    "lng": 75.909784,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc pusad": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc pombhurna": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc kopargaon": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:dhule:apmc sakri": {
+    "lat": 21.1305215,
+    "lng": 74.4900614,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:hingoli:hingoli(kanegoan naka)": {
+    "lat": 19.5431163,
+    "lng": 77.1739432,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:apmc pachora": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:hingoli:apmc hingoli": {
+    "lat": 19.7248322,
+    "lng": 77.144485,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 3.945601586933727e-05,
+    "needs_review": true
+  },
+  "maharashtra:jalna:apmc mantha": {
+    "lat": 19.918833,
+    "lng": 75.8708599,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc rahuri": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:latur:apmc nilanga": {
+    "lat": 18.3553347,
+    "lng": 76.7548997,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:latur:apmc aurad shahajani": {
+    "lat": 18.3553347,
+    "lng": 76.7548997,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:latur:latur(murud)": {
+    "lat": 18.3553347,
+    "lng": 76.7548997,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:mumbai:mumbai- fruit market": {
+    "lat": 19.054999,
+    "lng": 72.8692035,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:dharashiv:apmc murum": {
+    "lat": 18.169844,
+    "lng": 76.1179632,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:varud(rajura bazar)": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:apmc mehekar": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc barshi": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc pandharpur": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc ralegaon": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc kalamb": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:omchatinya multi state agro purpose co-op society, dist ahilyanagar": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc aarni": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:perfect krushi market yard, tal madha, dist solapur": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chattrapati sambhajinagar:apmc gangapur": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:dharashiv:apmc paranda": {
+    "lat": 18.169844,
+    "lng": 76.1179632,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:kolhapur:apmc kolhapur": {
+    "lat": 16.7028412,
+    "lng": 74.2405329,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc satana": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:thane:apmc ulhasnagar": {
+    "lat": 19.3653598,
+    "lng": 73.3685437,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:thane:apmc murbad": {
+    "lat": 19.3653598,
+    "lng": 73.3685437,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc mul": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:apmc baramati": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc chandwad": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc naigaon": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:barshi(vairag)": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc arvi": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc ashti": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:washim:apmc risod": {
+    "lat": 20.2874178,
+    "lng": 77.2369655,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:washim:washim(ansing)": {
+    "lat": 20.2874178,
+    "lng": 77.2369655,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc vani": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc shevgaon": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc daryapur": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc chandur railway": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc nandgaon khandeshwar": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:chattrapati sambhajinagar:apmc lasur station": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:gadchiroli:apmc chamorshi": {
+    "lat": 19.942758,
+    "lng": 79.8951673,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 3.750133516437045e-05,
+    "needs_review": true
+  },
+  "maharashtra:gondiya:apmc gondiya": {
+    "lat": 21.1456285,
+    "lng": 80.2683867,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:hingoli:apmc sengoan": {
+    "lat": 19.5431163,
+    "lng": 77.1739432,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:jalgaon(masawat)": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nagpur:apmc bhiwapur": {
+    "lat": 21.1498134,
+    "lng": 79.0820556,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:bhandara:apmc bhandara": {
+    "lat": 21.1225869,
+    "lng": 79.794509,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:mumbai:mumbai-onion & potato market": {
+    "lat": 19.054999,
+    "lng": 72.8692035,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:buldhana:bsk krishi bazar private limited, mehkar, dist buldhana": {
+    "lat": 20.562845,
+    "lng": 76.4086986,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc hadgaon": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nandurbar:apmc shahada": {
+    "lat": 21.5141622,
+    "lng": 74.5405513,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:apmc pimpalgaon baswant": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:apmc jalgaon": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:apmc indapur": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:junnar(alephata)": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:raigad:apmc alibagh": {
+    "lat": 18.4928092,
+    "lng": 73.138071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:sangli:apmc aatpadi": {
+    "lat": 17.1726928,
+    "lng": 74.5867654,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc mohol": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc wardha": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:apmc samudrapur": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:laxmi-sopan agriculture produce marketing co ltd, barshi, dist solapur": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:sai agro infratrade pvt agri market, dist wardha": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:mahesh krushi utpanna bazar, digras, dist yeotmal": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:shevgaon(bodhegaon)": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:akola:apmc barshi takli": {
+    "lat": 20.7618122,
+    "lng": 77.1921157,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc morshi": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc gondpimpri": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:gadchiroli:apmc gadchiroli": {
+    "lat": 19.7590704,
+    "lng": 80.1622807,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalgaon:apmc dharangaon": {
+    "lat": 20.8428827,
+    "lng": 75.5261246,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:ahilyanagar:apmc parner": {
+    "lat": 19.092952,
+    "lng": 74.7493451,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:raigad:apmc mangaon": {
+    "lat": 18.4928092,
+    "lng": 73.138071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:akola:apmc patur": {
+    "lat": 20.7618122,
+    "lng": 77.1921157,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:parbhani:apmc tadkalas": {
+    "lat": 19.2901981,
+    "lng": 76.6026443,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:hingoli:marathawada shetkari khajgi bazar parisar, vasmat, dist hingoli": {
+    "lat": 19.5431163,
+    "lng": 77.1739432,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc varora": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:wardha:ashti(karanja)": {
+    "lat": 20.8256231,
+    "lng": 78.6131455,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:chandrapur:apmc  rajura": {
+    "lat": 20.0967555,
+    "lng": 79.5045475,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:gadchiroli:apmc armori": {
+    "lat": 19.7590704,
+    "lng": 80.1622807,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:gondiya:apmc amgaon": {
+    "lat": 21.1456285,
+    "lng": 80.2683867,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:hingoli:apmc basmat": {
+    "lat": 19.5431163,
+    "lng": 77.1739432,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:jalna:apmc jafrabad": {
+    "lat": 19.918833,
+    "lng": 75.8708599,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:pune:apmc nira": {
+    "lat": 18.5213738,
+    "lng": 73.8545071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc dhamngaon-railway": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:nanded:apmc himayatnagar": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:solapur:apmc kurdwadi": {
+    "lat": 17.8499067,
+    "lng": 75.2763203,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc ghatanji": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc pandhakawada": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:apmc babhulgaon": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nashik:perfect krishi market yard pvt ltd, dist nashik": {
+    "lat": 20.0112475,
+    "lng": 73.7902364,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:yavatmal:jagdamba agrocare pvt ltd, pandharkawada, dist yeotmal": {
+    "lat": 20.0638677,
+    "lng": 78.3565663,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:amarawati:apmc dharni": {
+    "lat": 0.0,
+    "lng": 0.0,
+    "geocode_source": "failed",
+    "geocode_confidence": 0.0,
+    "needs_review": true
+  },
+  "maharashtra:raigad:apmc murud": {
+    "lat": 18.4928092,
+    "lng": 73.138071,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  },
+  "maharashtra:nanded:naigaon(kuntur)": {
+    "lat": 19.0942729,
+    "lng": 77.4832628,
+    "geocode_source": "nominatim",
+    "geocode_confidence": 0.5,
+    "needs_review": true
+  }
+}

@@ -12,7 +12,7 @@ if str(backend_dir) not in sys.path:
     sys.path.insert(0, str(backend_dir))
 
 from app.config import settings
-from app.db import Base
+from app.db import Base, resolve_db_url
 import app.models  # noqa: F401 - ensure models are registered on Base.metadata
 
 config = context.config
@@ -21,9 +21,10 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
+db_url = resolve_db_url(settings.DATABASE_URL)
 
 def run_migrations_offline() -> None:
-    url = settings.DATABASE_URL
+    url = db_url
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -46,7 +47,7 @@ def do_run_migrations(connection) -> None:
         context.run_migrations()
 
 async def run_async_migrations() -> None:
-    connectable = create_async_engine(settings.DATABASE_URL)
+    connectable = create_async_engine(db_url)
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)

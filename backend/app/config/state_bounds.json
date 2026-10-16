@@ -1,0 +1,62 @@
+{
+  "Maharashtra": {
+    "min_lat": 15.60,
+    "max_lat": 22.05,
+    "min_lng": 72.60,
+    "max_lng": 80.90
+  },
+  "Gujarat": {
+    "min_lat": 20.10,
+    "max_lat": 24.70,
+    "min_lng": 68.10,
+    "max_lng": 74.50
+  },
+  "Madhya Pradesh": {
+    "min_lat": 21.05,
+    "max_lat": 26.87,
+    "min_lng": 74.03,
+    "max_lng": 82.80
+  },
+  "Karnataka": {
+    "min_lat": 11.59,
+    "max_lat": 18.45,
+    "min_lng": 74.05,
+    "max_lng": 78.58
+  },
+  "Telangana": {
+    "min_lat": 15.83,
+    "max_lat": 19.92,
+    "min_lng": 77.23,
+    "max_lng": 81.79
+  },
+  "Andhra Pradesh": {
+    "min_lat": 12.62,
+    "max_lat": 19.15,
+    "min_lng": 76.76,
+    "max_lng": 84.77
+  },
+  "Punjab": {
+    "min_lat": 29.53,
+    "max_lat": 32.50,
+    "min_lng": 73.88,
+    "max_lng": 76.93
+  },
+  "Haryana": {
+    "min_lat": 27.65,
+    "max_lat": 30.92,
+    "min_lng": 74.46,
+    "max_lng": 77.60
+  },
+  "Uttar Pradesh": {
+    "min_lat": 23.87,
+    "max_lat": 30.40,
+    "min_lng": 77.08,
+    "max_lng": 84.64
+  },
+  "Rajasthan": {
+    "min_lat": 23.05,
+    "max_lat": 30.20,
+    "min_lng": 69.50,
+    "max_lng": 78.28
+  }
+}

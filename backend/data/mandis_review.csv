@@ -1,0 +1,194 @@
+id,state,district,name,lat,lng,geocode_source,geocode_confidence,needs_review
+1,Maharashtra,Buldhana,APMC Chikali,20.562845,76.4086986,nominatim,0.5,True
+2,Maharashtra,Wardha,Sindi (Selu),20.8256231,78.6131455,nominatim,0.5,True
+3,Maharashtra,Nanded,APMC Mukhed,19.0942729,77.4832628,nominatim,0.5,True
+4,Maharashtra,Nanded,APMC Kinwat,19.0942729,77.4832628,nominatim,0.5,True
+5,Maharashtra,Nashik,APMC Nasik,20.0112475,73.7902364,nominatim,0.5,True
+6,Maharashtra,Nashik,APMC Manmad,20.0112475,73.7902364,nominatim,0.5,True
+7,Maharashtra,Nashik,APMC Nandgaon,20.0112475,73.7902364,nominatim,0.5,True
+8,Maharashtra,Nashik,APMC Sinner,20.0112475,73.7902364,nominatim,0.5,True
+9,Maharashtra,Nashik,APMC Devala,20.0112475,73.7902364,nominatim,0.5,True
+10,Maharashtra,Amarawati,APMC Anajngaon,0.0,0.0,failed,0.0,True
+11,Maharashtra,Nashik,Lasalgaon(Vinchur),20.0112475,73.7902364,nominatim,0.5,True
+12,Maharashtra,Nashik,APMC Nampur,20.0112475,73.7902364,nominatim,0.5,True
+13,Maharashtra,Beed,APMC Gevrai,18.9918442,75.909784,nominatim,0.5,True
+14,Maharashtra,Parbhani,APMC Parbhani,19.2901981,76.6026443,nominatim,0.5,True
+15,Maharashtra,Nashik,Pimpalgaon Baswant(Saykheda),20.0112475,73.7902364,nominatim,0.5,True
+16,Maharashtra,Pune,APMC Pune,18.5213738,73.8545071,nominatim,0.5,True
+17,Maharashtra,Buldhana,APMC Deoulgaon Raja,20.562845,76.4086986,nominatim,0.5,True
+18,Maharashtra,Pune,APMC Khed,18.5213738,73.8545071,nominatim,0.5,True
+19,Maharashtra,Nashik,APMC Lasalgaon,20.0112475,73.7902364,nominatim,0.5,True
+20,Maharashtra,Nagpur,APMC Hingna,21.1498134,79.0820556,nominatim,0.5,True
+21,Maharashtra,Pune,Junnar(Otur),18.5213738,73.8545071,nominatim,0.5,True
+22,Maharashtra,Pune,Khed(Chakan),18.5213738,73.8545071,nominatim,0.5,True
+23,Maharashtra,Pune,Junnar(Narayangaon),18.5213738,73.8545071,nominatim,0.5,True
+24,Maharashtra,Pune,Pune(Manjri),18.5213738,73.8545071,nominatim,0.5,True
+25,Maharashtra,Pune,Pune(Moshi),18.5213738,73.8545071,nominatim,0.5,True
+26,Maharashtra,Raigad,APMC Panvel,18.4928092,73.138071,nominatim,0.5,True
+27,Maharashtra,Ahilyanagar,APMC Ahilyanagar,19.092952,74.7493451,nominatim,0.5,True
+28,Maharashtra,Ratnagiri,APMC Ratnagiri (Nachane),17.2826079,73.4569787,nominatim,0.5,True
+29,Maharashtra,Sangli,APMC Sangli,17.1726928,74.5867654,nominatim,0.5,True
+30,Maharashtra,Nagpur,APMC Kalmeshwar,21.1498134,79.0820556,nominatim,0.5,True
+31,Maharashtra,Sangli,APMC Tasgaon,17.1726928,74.5867654,nominatim,0.5,True
+32,Maharashtra,Sangli,APMC Vita,17.1726928,74.5867654,nominatim,0.5,True
+33,Maharashtra,Sangli,APMC Palus,17.1726928,74.5867654,nominatim,0.5,True
+34,Maharashtra,Satara,APMC Vai,17.6361289,74.2982781,nominatim,0.5,True
+35,Maharashtra,Satara,APMC Patan,17.6361289,74.2982781,nominatim,0.5,True
+36,Maharashtra,Solapur,APMC Solapur,17.6799325,75.927467,nominatim,5.6024261844770236e-05,True
+37,Maharashtra,Solapur,APMC Sangola,17.8499067,75.2763203,nominatim,0.5,True
+38,Maharashtra,Solapur,APMC Karmala,17.8499067,75.2763203,nominatim,0.5,True
+39,Maharashtra,Solapur,APMC Mangal Wedha,17.8499067,75.2763203,nominatim,0.5,True
+40,Maharashtra,Solapur,APMC Akluj,17.8935101,75.0121678,nominatim,3.750133516437045e-05,True
+41,Maharashtra,Wardha,APMC Hinganghat,20.5340174,78.8327986,nominatim,3.80018310825821e-05,True
+42,Maharashtra,Wardha,APMC Pulgaon,20.8256231,78.6131455,nominatim,0.5,True
+43,Maharashtra,Wardha,APMC Sindi,20.8256231,78.6131455,nominatim,0.5,True
+44,Maharashtra,Washim,APMC Karanja,20.2874178,77.2369655,nominatim,0.5,True
+45,Maharashtra,Washim,APMC Washim,20.2874178,77.2369655,nominatim,0.5,True
+46,Maharashtra,Yavatmal,APMC Mahagaon,20.0638677,78.3565663,nominatim,0.5,True
+47,Maharashtra,Yavatmal,APMC Umarkhed,20.0638677,78.3565663,nominatim,0.5,True
+48,Maharashtra,Yavatmal,APMC Digras,20.0638677,78.3565663,nominatim,0.5,True
+49,Maharashtra,Yavatmal,Umarked(Danki),20.0638677,78.3565663,nominatim,0.5,True
+50,Maharashtra,Ahilyanagar,APMC Shrirampur,19.092952,74.7493451,nominatim,0.5,True
+51,Maharashtra,Ahilyanagar,APMC Karjat,19.092952,74.7493451,nominatim,0.5,True
+52,Maharashtra,Ahilyanagar,Karjat(Rashin),19.092952,74.7493451,nominatim,0.5,True
+53,Maharashtra,Akola,APMC Akola,20.7618122,77.1921157,nominatim,0.5,True
+54,Maharashtra,Amarawati,APMC Amarawati,0.0,0.0,failed,0.0,True
+55,Maharashtra,Amarawati,Amrawati(Frui & Veg. Market),0.0,0.0,failed,0.0,True
+56,Maharashtra,Beed,APMC Majalgaon,18.9918442,75.909784,nominatim,0.5,True
+57,Maharashtra,Buldhana,APMC Khamgaon,20.562845,76.4086986,nominatim,0.5,True
+58,Maharashtra,Buldhana,APMC Malkapur,20.562845,76.4086986,nominatim,0.5,True
+59,Maharashtra,Buldhana,APMC Lonar,20.562845,76.4086986,nominatim,0.5,True
+60,Maharashtra,Chandrapur,APMC Chandrapur,20.0967555,79.5045475,nominatim,0.5,True
+61,Maharashtra,Chattrapati Sambhajinagar,APMC Chattrapati Sambhajinagar,0.0,0.0,failed,0.0,True
+62,Maharashtra,Chattrapati Sambhajinagar,APMC Paithan,0.0,0.0,failed,0.0,True
+63,Maharashtra,Dharashiv,APMC Dharashiv,18.169844,76.1179632,nominatim,0.5,True
+64,Maharashtra,Dharashiv,APMC Tuljapur,18.169844,76.1179632,nominatim,0.5,True
+65,Maharashtra,Gondiya,APMC Tiroda,21.1456285,80.2683867,nominatim,0.5,True
+66,Maharashtra,Jalgaon,APMC Bhusaval,20.8428827,75.5261246,nominatim,0.5,True
+67,Maharashtra,Jalgaon,APMC  Yawal,20.8428827,75.5261246,nominatim,0.5,True
+68,Maharashtra,Jalgaon,PACHORA(BHADGAON),20.8428827,75.5261246,nominatim,0.5,True
+69,Maharashtra,Jalna,APMC Jalana,19.918833,75.8708599,nominatim,0.5,True
+70,Maharashtra,Jalna,APMC Partur,19.918833,75.8708599,nominatim,0.5,True
+71,Maharashtra,Ahilyanagar,Rahuri(Vambori),19.092952,74.7493451,nominatim,0.5,True
+72,Maharashtra,Amarawati,APMC Achalpur,0.0,0.0,failed,0.0,True
+73,Maharashtra,Latur,APMC Ahmedpur,18.3553347,76.7548997,nominatim,0.5,True
+74,Maharashtra,Kolhapur,Kolhapur(Laxmipuri),16.7028412,74.2405329,nominatim,0.5,True
+75,Maharashtra,Latur,APMC  Latur,18.3553347,76.7548997,nominatim,0.5,True
+76,Maharashtra,Mumbai,APMC Mumbai,19.054999,72.8692035,nominatim,0.5,True
+77,Maharashtra,Nagpur,APMC Nagpur,21.1498134,79.0820556,nominatim,0.5,True
+78,Maharashtra,Nagpur,APMC Savner,21.1498134,79.0820556,nominatim,0.5,True
+79,Maharashtra,Nanded,APMC Bhokar,19.0942729,77.4832628,nominatim,0.5,True
+80,Maharashtra,Beed,APMC Kille Dharur,18.9918442,75.909784,nominatim,0.5,True
+81,Maharashtra,Ahilyanagar,APMC Sangamner,19.092952,74.7493451,nominatim,0.5,True
+82,Maharashtra,Kolhapur,APMC Vadgaonpeth,16.7028412,74.2405329,nominatim,0.5,True
+83,Maharashtra,Ahilyanagar,APMC Jamkhed,19.092952,74.7493451,nominatim,0.5,True
+84,Maharashtra,Beed,APMC Patoda,18.9918442,75.909784,nominatim,0.5,True
+85,Maharashtra,Chandrapur,APMC Savali,20.0967555,79.5045475,nominatim,0.5,True
+86,Maharashtra,Pune,Pune(Pimpri),18.5213738,73.8545071,nominatim,0.5,True
+87,Maharashtra,Nanded,APMC Mudkhed,19.0942729,77.4832628,nominatim,0.5,True
+88,Maharashtra,Nanded,Hadgaon(Tamsa),19.0942729,77.4832628,nominatim,0.5,True
+89,Maharashtra,Nandurbar,APMC Taloda,21.5141622,74.5405513,nominatim,0.5,True
+90,Maharashtra,Nashik,APMC Yeola,20.0112475,73.7902364,nominatim,0.5,True
+91,Maharashtra,Jalna,APMC Ambad (Vadigodri),19.918833,75.8708599,nominatim,0.5,True
+92,Maharashtra,Nashik,Lasalgaon(Niphad),20.0112475,73.7902364,nominatim,0.5,True
+93,Maharashtra,Nanded,APMC Loha,19.0942729,77.4832628,nominatim,0.5,True
+94,Maharashtra,Palghar,APMC  VASAI,19.757249,73.0931199,nominatim,0.5,True
+95,Maharashtra,Palghar,APMC Palghar,19.757249,73.0931199,nominatim,0.5,True
+96,Maharashtra,Parbhani,APMC Gangakhed,19.2901981,76.6026443,nominatim,0.5,True
+97,Maharashtra,Beed,APMC Beed,18.9918442,75.909784,nominatim,0.5,True
+98,Maharashtra,Yavatmal,APMC Pusad,20.0638677,78.3565663,nominatim,0.5,True
+99,Maharashtra,Chandrapur,APMC Pombhurna,20.0967555,79.5045475,nominatim,0.5,True
+100,Maharashtra,Ahilyanagar,APMC Kopargaon,19.092952,74.7493451,nominatim,0.5,True
+101,Maharashtra,Dhule,APMC Sakri,21.1305215,74.4900614,nominatim,0.5,True
+102,Maharashtra,Hingoli,Hingoli(Kanegoan Naka),19.5431163,77.1739432,nominatim,0.5,True
+103,Maharashtra,Jalgaon,APMC Pachora,20.8428827,75.5261246,nominatim,0.5,True
+104,Maharashtra,Hingoli,APMC Hingoli,19.7248322,77.144485,nominatim,3.945601586933727e-05,True
+105,Maharashtra,Jalna,APMC Mantha,19.918833,75.8708599,nominatim,0.5,True
+106,Maharashtra,Ahilyanagar,APMC Rahuri,19.092952,74.7493451,nominatim,0.5,True
+107,Maharashtra,Latur,APMC Nilanga,18.3553347,76.7548997,nominatim,0.5,True
+108,Maharashtra,Latur,APMC Aurad Shahajani,18.3553347,76.7548997,nominatim,0.5,True
+109,Maharashtra,Latur,Latur(Murud),18.3553347,76.7548997,nominatim,0.5,True
+110,Maharashtra,Mumbai,Mumbai- Fruit Market,19.054999,72.8692035,nominatim,0.5,True
+111,Maharashtra,Dharashiv,APMC Murum,18.169844,76.1179632,nominatim,0.5,True
+112,Maharashtra,Amarawati,Varud(Rajura Bazar),0.0,0.0,failed,0.0,True
+113,Maharashtra,Buldhana,APMC Mehekar,20.562845,76.4086986,nominatim,0.5,True
+114,Maharashtra,Solapur,APMC Barshi,17.8499067,75.2763203,nominatim,0.5,True
+115,Maharashtra,Solapur,APMC Pandharpur,17.8499067,75.2763203,nominatim,0.5,True
+116,Maharashtra,Yavatmal,APMC Ralegaon,20.0638677,78.3565663,nominatim,0.5,True
+117,Maharashtra,Yavatmal,APMC Kalamb,20.0638677,78.3565663,nominatim,0.5,True
+118,Maharashtra,Ahilyanagar,"Omchatinya Multi State Agro Purpose Co-Op Society, Dist Ahilyanagar",19.092952,74.7493451,nominatim,0.5,True
+119,Maharashtra,Yavatmal,APMC Aarni,20.0638677,78.3565663,nominatim,0.5,True
+120,Maharashtra,Solapur,"Perfect Krushi Market Yard, Tal Madha, Dist Solapur",17.8499067,75.2763203,nominatim,0.5,True
+121,Maharashtra,Chattrapati Sambhajinagar,APMC Gangapur,0.0,0.0,failed,0.0,True
+122,Maharashtra,Dharashiv,APMC Paranda,18.169844,76.1179632,nominatim,0.5,True
+123,Maharashtra,Kolhapur,APMC Kolhapur,16.7028412,74.2405329,nominatim,0.5,True
+124,Maharashtra,Nashik,APMC Satana,20.0112475,73.7902364,nominatim,0.5,True
+125,Maharashtra,Thane,APMC Ulhasnagar,19.3653598,73.3685437,nominatim,0.5,True
+126,Maharashtra,Thane,APMC Murbad,19.3653598,73.3685437,nominatim,0.5,True
+127,Maharashtra,Chandrapur,APMC Mul,20.0967555,79.5045475,nominatim,0.5,True
+128,Maharashtra,Pune,APMC Baramati,18.5213738,73.8545071,nominatim,0.5,True
+129,Maharashtra,Nashik,APMC Chandwad,20.0112475,73.7902364,nominatim,0.5,True
+130,Maharashtra,Nanded,APMC Naigaon,19.0942729,77.4832628,nominatim,0.5,True
+131,Maharashtra,Solapur,Barshi(Vairag),17.8499067,75.2763203,nominatim,0.5,True
+132,Maharashtra,Wardha,APMC Arvi,20.8256231,78.6131455,nominatim,0.5,True
+133,Maharashtra,Wardha,APMC Ashti,20.8256231,78.6131455,nominatim,0.5,True
+134,Maharashtra,Washim,APMC Risod,20.2874178,77.2369655,nominatim,0.5,True
+135,Maharashtra,Washim,Washim(Ansing),20.2874178,77.2369655,nominatim,0.5,True
+136,Maharashtra,Yavatmal,APMC Vani,20.0638677,78.3565663,nominatim,0.5,True
+137,Maharashtra,Ahilyanagar,APMC Shevgaon,19.092952,74.7493451,nominatim,0.5,True
+138,Maharashtra,Amarawati,APMC Daryapur,0.0,0.0,failed,0.0,True
+139,Maharashtra,Amarawati,APMC Chandur Railway,0.0,0.0,failed,0.0,True
+140,Maharashtra,Amarawati,APMC Nandgaon Khandeshwar,0.0,0.0,failed,0.0,True
+141,Maharashtra,Chattrapati Sambhajinagar,APMC Lasur Station,0.0,0.0,failed,0.0,True
+142,Maharashtra,Gadchiroli,APMC Chamorshi,19.942758,79.8951673,nominatim,3.750133516437045e-05,True
+143,Maharashtra,Gondiya,APMC Gondiya,21.1456285,80.2683867,nominatim,0.5,True
+144,Maharashtra,Hingoli,APMC Sengoan,19.5431163,77.1739432,nominatim,0.5,True
+145,Maharashtra,Jalgaon,Jalgaon(Masawat),20.8428827,75.5261246,nominatim,0.5,True
+146,Maharashtra,Nagpur,APMC Bhiwapur,21.1498134,79.0820556,nominatim,0.5,True
+147,Maharashtra,Bhandara,APMC Bhandara,21.1225869,79.794509,nominatim,0.5,True
+148,Maharashtra,Mumbai,Mumbai-Onion & Potato Market,19.054999,72.8692035,nominatim,0.5,True
+149,Maharashtra,Buldhana,"Bsk Krishi Bazar Private Limited, Mehkar, Dist Buldhana",20.562845,76.4086986,nominatim,0.5,True
+150,Maharashtra,Nanded,APMC Hadgaon,19.0942729,77.4832628,nominatim,0.5,True
+151,Maharashtra,Nandurbar,APMC Shahada,21.5141622,74.5405513,nominatim,0.5,True
+152,Maharashtra,Nashik,APMC Pimpalgaon Baswant,20.0112475,73.7902364,nominatim,0.5,True
+153,Maharashtra,Jalgaon,APMC Jalgaon,20.8428827,75.5261246,nominatim,0.5,True
+154,Maharashtra,Pune,APMC Indapur,18.5213738,73.8545071,nominatim,0.5,True
+155,Maharashtra,Pune,Junnar(Alephata),18.5213738,73.8545071,nominatim,0.5,True
+156,Maharashtra,Raigad,APMC Alibagh,18.4928092,73.138071,nominatim,0.5,True
+157,Maharashtra,Sangli,APMC Aatpadi,17.1726928,74.5867654,nominatim,0.5,True
+158,Maharashtra,Solapur,APMC Mohol,17.8499067,75.2763203,nominatim,0.5,True
+159,Maharashtra,Wardha,APMC Wardha,20.8256231,78.6131455,nominatim,0.5,True
+160,Maharashtra,Wardha,APMC Samudrapur,20.8256231,78.6131455,nominatim,0.5,True
+161,Maharashtra,Solapur,"Laxmi-Sopan Agriculture Produce Marketing Co Ltd, Barshi, Dist Solapur",17.8499067,75.2763203,nominatim,0.5,True
+162,Maharashtra,Wardha,"Sai Agro Infratrade Pvt Agri Market, Dist Wardha",20.8256231,78.6131455,nominatim,0.5,True
+163,Maharashtra,Yavatmal,"Mahesh Krushi Utpanna Bazar, Digras, Dist Yeotmal",20.0638677,78.3565663,nominatim,0.5,True
+164,Maharashtra,Ahilyanagar,Shevgaon(Bodhegaon),19.092952,74.7493451,nominatim,0.5,True
+165,Maharashtra,Akola,APMC Barshi Takli,20.7618122,77.1921157,nominatim,0.5,True
+166,Maharashtra,Amarawati,APMC Morshi,0.0,0.0,failed,0.0,True
+167,Maharashtra,Chandrapur,APMC Gondpimpri,20.0967555,79.5045475,nominatim,0.5,True
+168,Maharashtra,Gadchiroli,APMC Gadchiroli,19.7590704,80.1622807,nominatim,0.5,True
+169,Maharashtra,Jalgaon,APMC Dharangaon,20.8428827,75.5261246,nominatim,0.5,True
+170,Maharashtra,Ahilyanagar,APMC Parner,19.092952,74.7493451,nominatim,0.5,True
+171,Maharashtra,Raigad,APMC Mangaon,18.4928092,73.138071,nominatim,0.5,True
+172,Maharashtra,Akola,APMC Patur,20.7618122,77.1921157,nominatim,0.5,True
+173,Maharashtra,Parbhani,APMC Tadkalas,19.2901981,76.6026443,nominatim,0.5,True
+174,Maharashtra,Hingoli,"Marathawada Shetkari Khajgi Bazar Parisar, Vasmat, Dist Hingoli",19.5431163,77.1739432,nominatim,0.5,True
+175,Maharashtra,Chandrapur,APMC Varora,20.0967555,79.5045475,nominatim,0.5,True
+176,Maharashtra,Wardha,Ashti(Karanja),20.8256231,78.6131455,nominatim,0.5,True
+177,Maharashtra,Chandrapur,APMC  Rajura,20.0967555,79.5045475,nominatim,0.5,True
+178,Maharashtra,Gadchiroli,APMC Armori,19.7590704,80.1622807,nominatim,0.5,True
+179,Maharashtra,Gondiya,APMC Amgaon,21.1456285,80.2683867,nominatim,0.5,True
+180,Maharashtra,Hingoli,APMC Basmat,19.5431163,77.1739432,nominatim,0.5,True
+181,Maharashtra,Jalna,APMC Jafrabad,19.918833,75.8708599,nominatim,0.5,True
+182,Maharashtra,Pune,APMC Nira,18.5213738,73.8545071,nominatim,0.5,True
+183,Maharashtra,Amarawati,APMC Dhamngaon-Railway,0.0,0.0,failed,0.0,True
+184,Maharashtra,Nanded,APMC Himayatnagar,19.0942729,77.4832628,nominatim,0.5,True
+185,Maharashtra,Solapur,APMC Kurdwadi,17.8499067,75.2763203,nominatim,0.5,True
+186,Maharashtra,Yavatmal,APMC Ghatanji,20.0638677,78.3565663,nominatim,0.5,True
+187,Maharashtra,Yavatmal,APMC Pandhakawada,20.0638677,78.3565663,nominatim,0.5,True
+188,Maharashtra,Yavatmal,APMC Babhulgaon,20.0638677,78.3565663,nominatim,0.5,True
+189,Maharashtra,Nashik,"Perfect Krishi Market Yard Pvt Ltd, Dist Nashik",20.0112475,73.7902364,nominatim,0.5,True
+190,Maharashtra,Yavatmal,"Jagdamba Agrocare Pvt Ltd, Pandharkawada, Dist Yeotmal",20.0638677,78.3565663,nominatim,0.5,True
+191,Maharashtra,Amarawati,APMC Dharni,0.0,0.0,failed,0.0,True
+192,Maharashtra,Raigad,APMC Murud,18.4928092,73.138071,nominatim,0.5,True
+193,Maharashtra,Nanded,Naigaon(Kuntur),19.0942729,77.4832628,nominatim,0.5,True
