@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from decimal import Decimal
 from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, Field, field_validator
@@ -176,7 +176,7 @@ class CacheStatus(BaseModel):
 class CompareMeta(BaseModel):
     elapsed_ms: float
     cache: CacheStatus
-    generated_at: datetime = Field(default_factory=datetime.utcnow)
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class CompareResponse(BaseModel):
     query: Dict[str, Any]

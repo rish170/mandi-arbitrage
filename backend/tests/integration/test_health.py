@@ -61,33 +61,16 @@ async def test_meta_vehicles():
         assert "pickup" in data["vehicles"]
 
 @pytest.mark.asyncio
-async def test_unimplemented_routes_return_501():
+async def test_implemented_routes_status():
     async with AsyncClient(
         transport=ASGITransport(app=app), base_url="http://test"
     ) as client:
-        # Test compare
-        res_compare = await client.post(
-            "/api/v1/compare",
-            json={
-                "pincode": "411001",
-                "commodity": "Wheat",
-                "quantity_quintals": 10,
-                "vehicle": "pickup",
-                "quality": {"grade": "Good"},
-                "price_basis": "modal",
-                "include_other_charges": False,
-                "limit": 5,
-            },
-        )
-        assert res_compare.status_code == 501
-        assert res_compare.json()["error"]["code"] == "NOT_IMPLEMENTED"
-
-        # Test trend
+        # Test trend endpoint returns 200
         res_trend = await client.get(
             "/api/v1/trend?mandi_ids=1,2&commodity=Wheat"
         )
-        assert res_trend.status_code == 501
-        assert res_trend.json()["error"]["code"] == "NOT_IMPLEMENTED"
+        assert res_trend.status_code == 200
+        assert "series" in res_trend.json()
 
 @pytest.mark.asyncio
 async def test_validation_error_format():

@@ -13,11 +13,15 @@ from app.api.v1 import admin, compare, meta, trend
 from app.config import settings
 from app.schemas import ErrorDetail, ErrorResponse, HealthResponse
 
+from slowapi.errors import RateLimitExceeded
+from app.core.limiter import limiter
+
 app = FastAPI(
     title="Mandi Arbitrage Advisor API",
     description="Backend API for mandi price arbitrage comparison, net profit calculations, and historical trends.",
     version="0.01.00",
 )
+app.state.limiter = limiter
 
 # CORS middleware
 origins = [settings.FRONTEND_ORIGIN]
@@ -51,6 +55,19 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
                 "code": "VALIDATION_ERROR",
                 "message": "Request validation failed",
                 "details": jsonable_encoder(exc.errors()),
+            }
+        },
+    )
+
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_exception_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(
+        status_code=429,
+        content={
+            "error": {
+                "code": "RATE_LIMIT_EXCEEDED",
+                "message": f"Rate limit exceeded: {exc.detail}",
+                "details": None,
             }
         },
     )

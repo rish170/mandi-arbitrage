@@ -54,12 +54,21 @@ async def get_rates() -> RatesResponse:
         defaults=rates_cfg.defaults,
     )
 
+from cachetools import TTLCache
+
+META_CACHE = TTLCache(maxsize=100, ttl=3600)
+
 @router.get("/states", response_model=StatesResponse)
 async def get_states(db: AsyncSession = Depends(get_db)) -> StatesResponse:
+    cache_key = "meta:states"
+    if cache_key in META_CACHE:
+        return StatesResponse(states=META_CACHE[cache_key])
+
     result = await db.execute(select(Mandi.state).distinct().order_by(Mandi.state))
     states = [row[0] for row in result.all()]
     if not states:
         states = ["Maharashtra"]
+    META_CACHE[cache_key] = states
     return StatesResponse(states=states)
 
 @router.get("/districts", response_model=DistrictsResponse)
@@ -67,6 +76,10 @@ async def get_districts(
     state: str = Query(..., description="State name to get districts for"),
     db: AsyncSession = Depends(get_db),
 ) -> DistrictsResponse:
+    cache_key = f"meta:districts:{state.lower()}"
+    if cache_key in META_CACHE:
+        return DistrictsResponse(state=state, districts=META_CACHE[cache_key])
+
     result = await db.execute(
         select(Mandi.district)
         .where(Mandi.state == state)
@@ -74,4 +87,5 @@ async def get_districts(
         .order_by(Mandi.district)
     )
     districts = [row[0] for row in result.all()]
+    META_CACHE[cache_key] = districts
     return DistrictsResponse(state=state, districts=districts)
