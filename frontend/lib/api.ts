@@ -208,6 +208,16 @@ export class ApiError extends Error {
   }
 }
 
+export function buildApiUrl(baseUrl: string, endpoint: string): string {
+  const cleanBase = baseUrl.replace(/\/$/, "");
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+
+  if (cleanBase.endsWith("/api/v1") && cleanEndpoint.startsWith("/api/v1/")) {
+    return `${cleanBase}${cleanEndpoint.slice("/api/v1".length)}`;
+  }
+  return `${cleanBase}${cleanEndpoint}`;
+}
+
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || "http://localhost:8000";
 
@@ -223,7 +233,7 @@ async function requestWithTimeout<T>(
   options: RequestInit = {},
   retried = false
 ): Promise<T> {
-  const url = `${API_BASE_URL}${endpoint}`;
+  const url = buildApiUrl(API_BASE_URL, endpoint);
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
 
