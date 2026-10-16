@@ -3,7 +3,7 @@
   "info": {
     "title": "Mandi Arbitrage Advisor API",
     "description": "Agricultural commodity market arbitrage advisory backend. Calculates net realization after freight, statutory APMC market cess, agent commission, and produce quality discounts.",
-    "version": "0.04.00"
+    "version": "1.00.00"
   },
   "paths": {
     "/health": {
@@ -766,7 +766,7 @@
           "version": {
             "type": "string",
             "title": "Version",
-            "default": "0.01.00"
+            "default": "1.00.00"
           },
           "timestamp": {
             "type": "string",

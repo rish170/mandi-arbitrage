@@ -42,7 +42,7 @@ TAGS_METADATA = [
 app = FastAPI(
     title="Mandi Arbitrage Advisor API",
     description="Agricultural commodity market arbitrage advisory backend. Calculates net realization after freight, statutory APMC market cess, agent commission, and produce quality discounts.",
-    version="0.04.00",
+    version="1.00.00",
     openapi_tags=TAGS_METADATA,
 )
 app.state.limiter = limiter
@@ -134,7 +134,7 @@ async def generic_exception_handler(request: Request, exc: Exception):
 # Direct /health endpoint
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
 async def root_health_check() -> HealthResponse:
-    return HealthResponse(status="ok", version="0.01.00", timestamp=datetime.now(timezone.utc))
+    return HealthResponse(status="ok", version="1.00.00", timestamp=datetime.now(timezone.utc))
 
 # API v1 routes
 app.include_router(meta.router, prefix="/api/v1")
@@ -144,4 +144,4 @@ app.include_router(admin.router, prefix="/api/v1")
 
 @app.get("/api/v1/health", response_model=HealthResponse, tags=["Health"])
 async def v1_health_check() -> HealthResponse:
-    return HealthResponse(status="ok", version="0.01.00", timestamp=datetime.now(timezone.utc))
+    return HealthResponse(status="ok", version="1.00.00", timestamp=datetime.now(timezone.utc))

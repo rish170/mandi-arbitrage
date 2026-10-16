@@ -8,6 +8,12 @@ class Base(DeclarativeBase):
     pass
 
 def resolve_db_url(url: str) -> str:
+    # Handle Railway / Heroku postgres URL formats
+    if url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+    elif url.startswith("postgresql://") and not url.startswith("postgresql+asyncpg://"):
+        url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
     # Ensure relative SQLite URLs resolve consistently against backend BASE_DIR
     if "sqlite" in url and ":///./" in url:
         driver_prefix = url.split(":///./")[0]

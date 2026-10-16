@@ -54,3 +54,28 @@ Every backend dependency added to `backend/requirements.txt` has a specific, min
   - Result: The API returns the exact same count and records for the current day (`16/10/2026`). The upstream CKAN resource operates as a point-in-time daily snapshot, overwriting or retaining only current daily arrivals.
   - Conclusion: Historical backfill via the API is **not supported** by this data.gov.in resource. Daily history must accumulate via our twice-daily automated ingestion job storing persistent daily snapshots in our local database.
   - For historical trend charts prior to local accumulation, `scripts/seed_demo_history.py` will generate flagged demo series (`is_seeded=true`, source `demo_seed`) using bounded random walk, ensuring transparent labeling.
+
+---
+
+## 2026-10-17: Phase 3-7 Engine, UI, and Deployment
+
+### D-007: Single Batched Routing Call with Haversine Fallback
+- **Decision**: Candidate mandis are pre-ranked by Haversine distance, and the top 10 candidates are queried in a single batched `computeRouteMatrix` call to the Google Routes API. If Google Routes returns HTTP 403/429/500 or times out (1.2 s), the engine gracefully falls back to `Haversine * 1.3` road factor with `DISTANCE_FALLBACK` warning.
+- **Rationale**: Eliminates $N$ individual network round trips, meeting the sub-800ms warm latency SLA while remaining fully functional even when external Google API quotas or network partitions occur.
+
+### D-008: Multi-Tier Persistent and In-Memory Caching
+- **Decision**: Origin pincodes, coordinates, and road distances are stored permanently in SQLite/PostgreSQL `geocode_cache` and `distance_cache` tables, fronted by an in-memory `cachetools.TTLCache`.
+- **Rationale**: Reduces repeat query latency from ~1.5s down to <100ms and eliminates redundant Google API billable requests.
+
+### D-009: Liquid Glass Design System with Zero-Forbidden Hues (Rule R1)
+- **Decision**: Enforced earthy farm palette tokens (Forest, Wheat, Clay, Soil) with translucent glass backdrop filters (`blur(24px) saturate(180%)`) and zero colors between 190° and 340° hue angles.
+- **Rationale**: Prevents generic "AI SaaS" aesthetic (no blue/purple gradients) and delivers a high-contrast, tactile, farmer-first utility. Verified via automated WCAG contrast and palette AST scanning scripts.
+
+### D-010: Complete Bilingual String Translation and Zero Untranslated Keys
+- **Decision**: Maintained 100% key parity between `frontend/locales/en.json` and `frontend/locales/hi.json`, verified by automated Vitest parity tests.
+- **Rationale**: Farmers in Maharashtra and rural India require natural, native Devanagari terminology for agricultural commodities, market charges, and quality grades.
+
+### D-011: PostgreSQL Connection URL Auto-Normalization
+- **Decision**: Implemented automatic string transformation in `app.db.resolve_db_url()` to convert incoming `postgres://` or `postgresql://` strings to `postgresql+asyncpg://`.
+- **Rationale**: Cloud PaaS providers like Railway provision database connection strings using legacy `postgres://` schemas. Converting them seamlessly in the driver initialization enables zero-configuration deployment.
+

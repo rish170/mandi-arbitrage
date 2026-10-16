@@ -16,7 +16,7 @@ class ErrorResponse(BaseModel):
 # Health response
 class HealthResponse(BaseModel):
     status: str = "ok"
-    version: str = "0.01.00"
+    version: str = "1.00.00"
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
 # Meta responses

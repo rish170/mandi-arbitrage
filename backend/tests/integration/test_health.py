@@ -11,7 +11,7 @@ async def test_health_check():
         assert response.status_code == 200
         data = response.json()
         assert data["status"] == "ok"
-        assert data["version"] == "0.01.00"
+        assert data["version"] == "1.00.00"
         assert "timestamp" in data
         assert "X-Process-Time-ms" in response.headers
 

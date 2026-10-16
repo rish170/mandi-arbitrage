@@ -6,10 +6,10 @@ Empirical latency benchmark results for `POST /api/v1/compare` across $N=60$ req
 
 | Metric | Cold Cache Target | Cold Result | Warm Cache Target | Warm Result | Target Met |
 |---|---|---|---|---|---|
-| **Median (p50)** | - | `228.6 ms` | - | `216.0 ms` | YES |
-| **p95** | < 3000 ms | `1184.2 ms` | < 800 ms | `360.5 ms` | YES |
-| **p99** | < 3000 ms | `1214.5 ms` | < 1000 ms | `422.8 ms` | YES |
-| **Max Latency** | < 3000 ms | `1246.3 ms` | < 1500 ms | `463.2 ms` | YES |
+| **Median (p50)** | - | `336.9 ms` | - | `314.0 ms` | YES |
+| **p95** | < 3000 ms | `1576.8 ms` | < 800 ms | `543.0 ms` | YES |
+| **p99** | < 3000 ms | `1627.3 ms` | < 1000 ms | `582.8 ms` | YES |
+| **Max Latency** | < 3000 ms | `1680.4 ms` | < 1500 ms | `598.4 ms` | YES |
 | **Failed / Errors** | 0 | `0` | 0 | `0` | YES |
 
 ## Environment Notes
