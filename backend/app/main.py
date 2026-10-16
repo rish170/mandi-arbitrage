@@ -16,10 +16,34 @@ from app.schemas import ErrorDetail, ErrorResponse, HealthResponse
 from slowapi.errors import RateLimitExceeded
 from app.core.limiter import limiter
 
+TAGS_METADATA = [
+    {
+        "name": "Compare",
+        "description": "Core comparison engine ranking mandis by net profit per quintal after deducting transport, statutory APMC fees, and quality discounts.",
+    },
+    {
+        "name": "Trend",
+        "description": "Historical daily price time series for mandis over up to 30 days.",
+    },
+    {
+        "name": "Metadata",
+        "description": "System configuration, supported commodities, vehicle rate cards, and administrative geography.",
+    },
+    {
+        "name": "Health",
+        "description": "System liveness and readiness diagnostics.",
+    },
+    {
+        "name": "Admin",
+        "description": "Protected administrative and data ingestion endpoints.",
+    },
+]
+
 app = FastAPI(
     title="Mandi Arbitrage Advisor API",
-    description="Backend API for mandi price arbitrage comparison, net profit calculations, and historical trends.",
-    version="0.01.00",
+    description="Agricultural commodity market arbitrage advisory backend. Calculates net realization after freight, statutory APMC market cess, agent commission, and produce quality discounts.",
+    version="0.04.00",
+    openapi_tags=TAGS_METADATA,
 )
 app.state.limiter = limiter
 

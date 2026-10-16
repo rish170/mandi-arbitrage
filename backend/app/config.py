@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     MAX_RADIUS_KM: int = 150
     PRICE_MAX_AGE_DAYS: int = 3
     TREND_DAYS: int = 7
+    DISABLE_RATE_LIMIT: bool = False
 
     model_config = SettingsConfigDict(
         env_file=str(BASE_DIR / ".env"),

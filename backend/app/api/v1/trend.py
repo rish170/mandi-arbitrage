@@ -10,7 +10,16 @@ from app.services.prices import get_trend_for_mandis
 
 router = APIRouter(tags=["Trend"])
 
-@router.get("/trend", response_model=TrendResponse)
+@router.get(
+    "/trend",
+    response_model=TrendResponse,
+    summary="Fetch mandi historical price trends",
+    description="Returns daily historical modal, min, and max price series for requested mandi IDs over the specified number of days (default 7, max 30). Missing days contain null values (gaps are never interpolated).",
+    responses={
+        200: {"description": "Historical price series per mandi."},
+        422: {"description": "Invalid mandi IDs or parameter format."},
+    },
+)
 async def get_price_trend(
     mandi_ids: str = Query(..., description="Comma-separated mandi IDs, e.g. 1,2,3"),
     commodity: str = Query(..., description="Commodity canonical name, e.g. Wheat"),

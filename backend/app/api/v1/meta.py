@@ -17,13 +17,13 @@ from app.schemas import (
 
 router = APIRouter(prefix="/meta", tags=["Metadata"])
 
-@router.get("/crops", response_model=CropsResponse)
+@router.get("/crops", response_model=CropsResponse, summary="List supported crops", description="Returns canonical list of supported crops with English and Hindi names and query aliases.")
 async def get_crops() -> CropsResponse:
     crops_cfg = load_crops_config()
     crops_list = [CropSchema.model_validate(c.model_dump()) for c in crops_cfg.crops]
     return CropsResponse(crops=crops_list)
 
-@router.get("/vehicles", response_model=VehiclesResponse)
+@router.get("/vehicles", response_model=VehiclesResponse, summary="List vehicle specifications", description="Returns standard freight vehicles with capacities in quintals and default per-km rates.")
 async def get_vehicles() -> VehiclesResponse:
     rates_cfg = load_rates_config()
     vehicles_dict = {
@@ -37,7 +37,7 @@ async def get_vehicles() -> VehiclesResponse:
     }
     return VehiclesResponse(vehicles=vehicles_dict)
 
-@router.get("/rates", response_model=RatesResponse)
+@router.get("/rates", response_model=RatesResponse, summary="Get rate card and assumptions", description="Returns statutory fee defaults, state overrides, vehicle rates, quality cuts, and assumption status flags.")
 async def get_rates() -> RatesResponse:
     rates_cfg = load_rates_config()
     return RatesResponse(
@@ -58,7 +58,7 @@ from cachetools import TTLCache
 
 META_CACHE = TTLCache(maxsize=100, ttl=3600)
 
-@router.get("/states", response_model=StatesResponse)
+@router.get("/states", response_model=StatesResponse, summary="List active states", description="Returns distinct states containing active mandis in the database (cached 1h).")
 async def get_states(db: AsyncSession = Depends(get_db)) -> StatesResponse:
     cache_key = "meta:states"
     if cache_key in META_CACHE:
@@ -71,7 +71,7 @@ async def get_states(db: AsyncSession = Depends(get_db)) -> StatesResponse:
     META_CACHE[cache_key] = states
     return StatesResponse(states=states)
 
-@router.get("/districts", response_model=DistrictsResponse)
+@router.get("/districts", response_model=DistrictsResponse, summary="List districts for a state", description="Returns distinct districts with active mandis for the requested state (cached 1h).")
 async def get_districts(
     state: str = Query(..., description="State name to get districts for"),
     db: AsyncSession = Depends(get_db),

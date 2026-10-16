@@ -1,0 +1,11 @@
+id,origin_pincode,commodity,quantity_q,vehicle,quality_grade,mandi_name,manual_price_q,manual_road_km,manual_fee_pct,manual_commission_pct,manual_rate_per_km,manual_net_q,manual_notes
+1,440001,Wheat,10.0,pickup,Good,APMC Nagpur,,,,,,,
+2,440001,Wheat,15.0,pickup,Average,APMC Wardha,,,,,,,
+3,440001,Soyabean,8.0,tempo,Good,APMC Nagpur,,,,,,,
+4,444001,Soyabean,20.0,mini_truck,Below average,APMC Akola,,,,,,,
+5,444001,Onion,25.0,mini_truck,Good,APMC Akola,,,,,,,
+6,444001,Wheat,40.0,mini_truck,Average,APMC Khamgaon,,,,,,,
+7,414001,Onion,12.0,pickup,Poor,APMC Karjat,,,,,,,
+8,414001,Tomato,5.0,tempo,Good,APMC Ahilyanagar,,,,,,,
+9,414001,Soyabean,30.0,mini_truck,Good,APMC Kopargaon,,,,,,,
+10,414001,Wheat,60.0,truck,Below average,APMC Ahilyanagar,,,,,,,

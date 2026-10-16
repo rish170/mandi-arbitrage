@@ -52,7 +52,17 @@ def find_canonical_crop(commodity_query: str) -> Optional[str]:
                 return crop.name_en
     return None
 
-@router.post("/compare", response_model=CompareResponse)
+@router.post(
+    "/compare",
+    response_model=CompareResponse,
+    summary="Compare mandis by net profit",
+    description="Resolves origin location, finds candidate mandis within radius with active prices, computes batched road distances, calculates net profit per quintal deducting freight, market fees, and quality cuts, ranks mandis descending by net realization, and returns a detailed comparison breakdown.",
+    responses={
+        200: {"description": "Successful comparison with ranked mandi results, summary, assumptions, and warnings."},
+        422: {"description": "Validation error (invalid pincode, unknown commodity, or missing location)."},
+        429: {"description": "Rate limit exceeded (30 requests per minute per IP address)."},
+    },
+)
 @limiter.limit("30/minute")
 async def compare_mandis(
     request: Request,

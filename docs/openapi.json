@@ -1,0 +1,1349 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Mandi Arbitrage Advisor API",
+    "description": "Agricultural commodity market arbitrage advisory backend. Calculates net realization after freight, statutory APMC market cess, agent commission, and produce quality discounts.",
+    "version": "0.04.00"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Root Health Check",
+        "operationId": "root_health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/crops": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "List supported crops",
+        "description": "Returns canonical list of supported crops with English and Hindi names and query aliases.",
+        "operationId": "get_crops_api_v1_meta_crops_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CropsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/vehicles": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "List vehicle specifications",
+        "description": "Returns standard freight vehicles with capacities in quintals and default per-km rates.",
+        "operationId": "get_vehicles_api_v1_meta_vehicles_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/rates": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Get rate card and assumptions",
+        "description": "Returns statutory fee defaults, state overrides, vehicle rates, quality cuts, and assumption status flags.",
+        "operationId": "get_rates_api_v1_meta_rates_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/states": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "List active states",
+        "description": "Returns distinct states containing active mandis in the database (cached 1h).",
+        "operationId": "get_states_api_v1_meta_states_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/districts": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "List districts for a state",
+        "description": "Returns distinct districts with active mandis for the requested state (cached 1h).",
+        "operationId": "get_districts_api_v1_meta_districts_get",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "State name to get districts for",
+              "title": "State"
+            },
+            "description": "State name to get districts for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DistrictsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/compare": {
+      "post": {
+        "tags": [
+          "Compare"
+        ],
+        "summary": "Compare mandis by net profit",
+        "description": "Resolves origin location, finds candidate mandis within radius with active prices, computes batched road distances, calculates net profit per quintal deducting freight, market fees, and quality cuts, ranks mandis descending by net realization, and returns a detailed comparison breakdown.",
+        "operationId": "compare_mandis_api_v1_compare_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompareRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful comparison with ranked mandi results, summary, assumptions, and warnings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompareResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error (invalid pincode, unknown commodity, or missing location)."
+          },
+          "429": {
+            "description": "Rate limit exceeded (30 requests per minute per IP address)."
+          }
+        }
+      }
+    },
+    "/api/v1/trend": {
+      "get": {
+        "tags": [
+          "Trend"
+        ],
+        "summary": "Fetch mandi historical price trends",
+        "description": "Returns daily historical modal, min, and max price series for requested mandi IDs over the specified number of days (default 7, max 30). Missing days contain null values (gaps are never interpolated).",
+        "operationId": "get_price_trend_api_v1_trend_get",
+        "parameters": [
+          {
+            "name": "mandi_ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated mandi IDs, e.g. 1,2,3",
+              "title": "Mandi Ids"
+            },
+            "description": "Comma-separated mandi IDs, e.g. 1,2,3"
+          },
+          {
+            "name": "commodity",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Commodity canonical name, e.g. Wheat",
+              "title": "Commodity"
+            },
+            "description": "Commodity canonical name, e.g. Wheat"
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 30,
+              "minimum": 1,
+              "description": "Number of historical days (default: 7)",
+              "default": 7,
+              "title": "Days"
+            },
+            "description": "Number of historical days (default: 7)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Historical price series per mandi.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrendResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid mandi IDs or parameter format."
+          }
+        }
+      }
+    },
+    "/api/v1/admin/ingest": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Trigger Ingest",
+        "operationId": "trigger_ingest_api_v1_admin_ingest_post",
+        "parameters": [
+          {
+            "name": "X-Admin-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Admin-Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "V1 Health Check",
+        "operationId": "v1_health_check_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssumptionsBrief": {
+        "properties": {
+          "rates_status": {
+            "type": "string",
+            "title": "Rates Status"
+          },
+          "market_fee_pct": {
+            "type": "string",
+            "title": "Market Fee Pct"
+          },
+          "commission_pct": {
+            "type": "string",
+            "title": "Commission Pct"
+          },
+          "vehicle": {
+            "type": "string",
+            "title": "Vehicle"
+          },
+          "rate_per_km": {
+            "type": "string",
+            "title": "Rate Per Km"
+          },
+          "quality_cut_pct": {
+            "type": "string",
+            "title": "Quality Cut Pct"
+          },
+          "round_trip_factor": {
+            "type": "string",
+            "title": "Round Trip Factor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rates_status",
+          "market_fee_pct",
+          "commission_pct",
+          "vehicle",
+          "rate_per_km",
+          "quality_cut_pct",
+          "round_trip_factor"
+        ],
+        "title": "AssumptionsBrief"
+      },
+      "BreakdownBrief": {
+        "properties": {
+          "price_q": {
+            "type": "string",
+            "title": "Price Q"
+          },
+          "quality_cut_q": {
+            "type": "string",
+            "title": "Quality Cut Q"
+          },
+          "realized_q": {
+            "type": "string",
+            "title": "Realized Q"
+          },
+          "mandi_fee_q": {
+            "type": "string",
+            "title": "Mandi Fee Q"
+          },
+          "transport_q": {
+            "type": "string",
+            "title": "Transport Q"
+          },
+          "other_q": {
+            "type": "string",
+            "title": "Other Q"
+          },
+          "net_q": {
+            "type": "string",
+            "title": "Net Q"
+          },
+          "net_total": {
+            "type": "string",
+            "title": "Net Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "price_q",
+          "quality_cut_q",
+          "realized_q",
+          "mandi_fee_q",
+          "transport_q",
+          "other_q",
+          "net_q",
+          "net_total"
+        ],
+        "title": "BreakdownBrief"
+      },
+      "CacheStatus": {
+        "properties": {
+          "geocode": {
+            "type": "string",
+            "title": "Geocode"
+          },
+          "distance": {
+            "type": "string",
+            "title": "Distance"
+          },
+          "prices": {
+            "type": "string",
+            "title": "Prices"
+          }
+        },
+        "type": "object",
+        "required": [
+          "geocode",
+          "distance",
+          "prices"
+        ],
+        "title": "CacheStatus"
+      },
+      "CompareMeta": {
+        "properties": {
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          },
+          "cache": {
+            "$ref": "#/components/schemas/CacheStatus"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Generated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "elapsed_ms",
+          "cache"
+        ],
+        "title": "CompareMeta"
+      },
+      "CompareRequest": {
+        "properties": {
+          "pincode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pincode"
+          },
+          "state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State"
+          },
+          "district": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "District"
+          },
+          "commodity": {
+            "type": "string",
+            "title": "Commodity"
+          },
+          "variety": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variety"
+          },
+          "quantity_quintals": {
+            "anyOf": [
+              {
+                "type": "number",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Quantity Quintals",
+            "default": "10.0"
+          },
+          "vehicle": {
+            "type": "string",
+            "title": "Vehicle",
+            "default": "pickup"
+          },
+          "quality": {
+            "$ref": "#/components/schemas/QualityInput"
+          },
+          "price_basis": {
+            "type": "string",
+            "enum": [
+              "modal",
+              "min",
+              "max"
+            ],
+            "title": "Price Basis",
+            "default": "modal"
+          },
+          "overrides": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OverridesInput"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "include_other_charges": {
+            "type": "boolean",
+            "title": "Include Other Charges",
+            "default": false
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 10.0,
+            "minimum": 1.0,
+            "title": "Limit",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "required": [
+          "commodity"
+        ],
+        "title": "CompareRequest"
+      },
+      "CompareResponse": {
+        "properties": {
+          "query": {
+            "type": "object",
+            "title": "Query"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/CompareResultItem"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SummaryBrief"
+          },
+          "assumptions": {
+            "$ref": "#/components/schemas/AssumptionsBrief"
+          },
+          "warnings": {
+            "items": {
+              "$ref": "#/components/schemas/WarningItem"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/CompareMeta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "query",
+          "results",
+          "summary",
+          "assumptions",
+          "warnings",
+          "meta"
+        ],
+        "title": "CompareResponse"
+      },
+      "CompareResultItem": {
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          },
+          "is_nearest": {
+            "type": "boolean",
+            "title": "Is Nearest"
+          },
+          "mandi": {
+            "$ref": "#/components/schemas/MandiBrief"
+          },
+          "price": {
+            "$ref": "#/components/schemas/PriceBrief"
+          },
+          "distance": {
+            "$ref": "#/components/schemas/DistanceBrief"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/BreakdownBrief"
+          },
+          "vs_nearest": {
+            "$ref": "#/components/schemas/VsNearestBrief"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rank",
+          "is_nearest",
+          "mandi",
+          "price",
+          "distance",
+          "breakdown",
+          "vs_nearest"
+        ],
+        "title": "CompareResultItem"
+      },
+      "CropSchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name_en": {
+            "type": "string",
+            "title": "Name En"
+          },
+          "name_hi": {
+            "type": "string",
+            "title": "Name Hi"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name_en",
+          "name_hi",
+          "aliases"
+        ],
+        "title": "CropSchema"
+      },
+      "CropsResponse": {
+        "properties": {
+          "crops": {
+            "items": {
+              "$ref": "#/components/schemas/CropSchema"
+            },
+            "type": "array",
+            "title": "Crops"
+          }
+        },
+        "type": "object",
+        "required": [
+          "crops"
+        ],
+        "title": "CropsResponse"
+      },
+      "DistanceBrief": {
+        "properties": {
+          "road_km": {
+            "type": "number",
+            "title": "Road Km"
+          },
+          "duration_min": {
+            "type": "number",
+            "title": "Duration Min"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "road_km",
+          "duration_min",
+          "source"
+        ],
+        "title": "DistanceBrief"
+      },
+      "DistrictsResponse": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "districts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Districts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "state",
+          "districts"
+        ],
+        "title": "DistrictsResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "ok"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "default": "0.01.00"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "title": "HealthResponse"
+      },
+      "IngestResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "records_fetched": {
+            "type": "integer",
+            "title": "Records Fetched"
+          },
+          "records_inserted": {
+            "type": "integer",
+            "title": "Records Inserted"
+          },
+          "duration_seconds": {
+            "type": "number",
+            "title": "Duration Seconds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "records_fetched",
+          "records_inserted",
+          "duration_seconds"
+        ],
+        "title": "IngestResponse"
+      },
+      "MandiBrief": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "district": {
+            "type": "string",
+            "title": "District"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "district",
+          "state",
+          "lat",
+          "lng"
+        ],
+        "title": "MandiBrief"
+      },
+      "OverridesInput": {
+        "properties": {
+          "market_fee_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Market Fee Pct"
+          },
+          "commission_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commission Pct"
+          },
+          "rate_per_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate Per Km"
+          }
+        },
+        "type": "object",
+        "title": "OverridesInput"
+      },
+      "PriceBrief": {
+        "properties": {
+          "basis": {
+            "type": "string",
+            "title": "Basis"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "min": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "arrival_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Arrival Date"
+          },
+          "age_days": {
+            "type": "integer",
+            "title": "Age Days"
+          },
+          "variety": {
+            "type": "string",
+            "title": "Variety"
+          },
+          "varieties_used": {
+            "type": "integer",
+            "title": "Varieties Used"
+          },
+          "is_stale": {
+            "type": "boolean",
+            "title": "Is Stale"
+          }
+        },
+        "type": "object",
+        "required": [
+          "basis",
+          "value",
+          "arrival_date",
+          "age_days",
+          "variety",
+          "varieties_used",
+          "is_stale"
+        ],
+        "title": "PriceBrief"
+      },
+      "QualityInput": {
+        "properties": {
+          "grade": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade"
+          },
+          "custom_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Pct"
+          }
+        },
+        "type": "object",
+        "title": "QualityInput"
+      },
+      "RatesResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          },
+          "market_fee_pct_default": {
+            "type": "string",
+            "title": "Market Fee Pct Default"
+          },
+          "commission_pct_default": {
+            "type": "string",
+            "title": "Commission Pct Default"
+          },
+          "state_overrides": {
+            "type": "object",
+            "title": "State Overrides"
+          },
+          "vehicles": {
+            "type": "object",
+            "title": "Vehicles"
+          },
+          "quality_grades": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Quality Grades"
+          },
+          "custom_quality_cut_pct_range": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Custom Quality Cut Pct Range"
+          },
+          "other_charges_per_quintal": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Other Charges Per Quintal"
+          },
+          "fallback_distance": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Fallback Distance"
+          },
+          "defaults": {
+            "type": "object",
+            "title": "Defaults"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "note",
+          "market_fee_pct_default",
+          "commission_pct_default",
+          "state_overrides",
+          "vehicles",
+          "quality_grades",
+          "custom_quality_cut_pct_range",
+          "other_charges_per_quintal",
+          "fallback_distance",
+          "defaults"
+        ],
+        "title": "RatesResponse"
+      },
+      "StatesResponse": {
+        "properties": {
+          "states": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "States"
+          }
+        },
+        "type": "object",
+        "required": [
+          "states"
+        ],
+        "title": "StatesResponse"
+      },
+      "SummaryBrief": {
+        "properties": {
+          "best_mandi_id": {
+            "type": "integer",
+            "title": "Best Mandi Id"
+          },
+          "nearest_mandi_id": {
+            "type": "integer",
+            "title": "Nearest Mandi Id"
+          },
+          "extra_profit_q": {
+            "type": "string",
+            "title": "Extra Profit Q"
+          },
+          "extra_profit_total": {
+            "type": "string",
+            "title": "Extra Profit Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "best_mandi_id",
+          "nearest_mandi_id",
+          "extra_profit_q",
+          "extra_profit_total"
+        ],
+        "title": "SummaryBrief"
+      },
+      "TrendPoint": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "modal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Modal"
+          },
+          "min": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "is_seeded": {
+            "type": "boolean",
+            "title": "Is Seeded",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "date"
+        ],
+        "title": "TrendPoint"
+      },
+      "TrendResponse": {
+        "properties": {
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/TrendSeries"
+            },
+            "type": "array",
+            "title": "Series"
+          }
+        },
+        "type": "object",
+        "required": [
+          "series"
+        ],
+        "title": "TrendResponse"
+      },
+      "TrendSeries": {
+        "properties": {
+          "mandi_id": {
+            "type": "integer",
+            "title": "Mandi Id"
+          },
+          "mandi_name": {
+            "type": "string",
+            "title": "Mandi Name"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/TrendPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mandi_id",
+          "mandi_name",
+          "points"
+        ],
+        "title": "TrendSeries"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VehicleSchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "capacity_quintals": {
+            "type": "string",
+            "title": "Capacity Quintals"
+          },
+          "rate_per_km": {
+            "type": "string",
+            "title": "Rate Per Km"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "capacity_quintals",
+          "rate_per_km"
+        ],
+        "title": "VehicleSchema"
+      },
+      "VehiclesResponse": {
+        "properties": {
+          "vehicles": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/VehicleSchema"
+            },
+            "type": "object",
+            "title": "Vehicles"
+          }
+        },
+        "type": "object",
+        "required": [
+          "vehicles"
+        ],
+        "title": "VehiclesResponse"
+      },
+      "VsNearestBrief": {
+        "properties": {
+          "delta_q": {
+            "type": "string",
+            "title": "Delta Q"
+          },
+          "delta_total": {
+            "type": "string",
+            "title": "Delta Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "delta_q",
+          "delta_total"
+        ],
+        "title": "VsNearestBrief"
+      },
+      "WarningItem": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "STALE_PRICE",
+              "DISTANCE_FALLBACK",
+              "GEOCODE_FALLBACK",
+              "FEWER_THAN_LIMIT",
+              "NO_PRICE_DATA",
+              "ASSUMED_RATES"
+            ],
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "WarningItem"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Compare",
+      "description": "Core comparison engine ranking mandis by net profit per quintal after deducting transport, statutory APMC fees, and quality discounts."
+    },
+    {
+      "name": "Trend",
+      "description": "Historical daily price time series for mandis over up to 30 days."
+    },
+    {
+      "name": "Metadata",
+      "description": "System configuration, supported commodities, vehicle rate cards, and administrative geography."
+    },
+    {
+      "name": "Health",
+      "description": "System liveness and readiness diagnostics."
+    },
+    {
+      "name": "Admin",
+      "description": "Protected administrative and data ingestion endpoints."
+    }
+  ]
+}

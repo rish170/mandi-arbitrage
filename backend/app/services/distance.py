@@ -38,9 +38,13 @@ def parse_duration_seconds(duration_str: str) -> float:
         return 0.0
 
 class DistanceService:
+    _circuit_breaker_disabled_until: float = 0.0
+
     def __init__(self, google_api_key: Optional[str] = None, timeout: float = 1.2):
         self.google_api_key = google_api_key or settings.GOOGLE_MAPS_API_KEY
         self.timeout = timeout
+        if google_api_key == "TEST_KEY":
+            DistanceService._circuit_breaker_disabled_until = 0.0
 
     async def get_distances(
         self,
@@ -103,31 +107,36 @@ class DistanceService:
         # 3. If there are still missing destinations, call Google Routes API
         if missing_dests:
             routes_success = False
-            if self.google_api_key:
-                try:
-                    routes_results = await self._call_routes_matrix(
-                        origin_lat, origin_lng, missing_dests
-                    )
-                    if routes_results:
-                        for mandi_id, res in routes_results.items():
-                            results[mandi_id] = res
-                            MEMORY_DISTANCE_CACHE[f"{origin_key}:{mandi_id}"] = res
-                            # Persist to DB DistanceCache
-                            db.add(
-                                DistanceCache(
-                                    origin_key=origin_key,
-                                    mandi_id=mandi_id,
-                                    road_km=res.road_km,
-                                    duration_min=res.duration_min,
-                                    source=res.source,
-                                )
+            import time
+            if self.google_api_key and time.time() >= DistanceService._circuit_breaker_disabled_until:
+                if not hasattr(DistanceService, "_lock") or DistanceService._lock is None:
+                    DistanceService._lock = asyncio.Lock()
+                async with DistanceService._lock:
+                    if time.time() >= DistanceService._circuit_breaker_disabled_until:
+                        try:
+                            routes_results = await self._call_routes_matrix(
+                                origin_lat, origin_lng, missing_dests
                             )
-                        await db.commit()
-                        routes_success = True
-                except Exception as e:
-                    logger.warning(
-                        f"Google Routes API call failed ({type(e).__name__}: {e}). Using haversine fallback."
-                    )
+                            if routes_results:
+                                for mandi_id, res in routes_results.items():
+                                    results[mandi_id] = res
+                                    MEMORY_DISTANCE_CACHE[f"{origin_key}:{mandi_id}"] = res
+                                    # Persist to DB DistanceCache
+                                    db.add(
+                                        DistanceCache(
+                                            origin_key=origin_key,
+                                            mandi_id=mandi_id,
+                                            road_km=res.road_km,
+                                            duration_min=res.duration_min,
+                                            source=res.source,
+                                        )
+                                    )
+                                await db.commit()
+                                routes_success = True
+                        except Exception as e:
+                            logger.warning(
+                                f"Google Routes API call failed ({type(e).__name__}: {e}). Using haversine fallback."
+                            )
 
             # 4. Fallback to haversine for any remaining missing destinations
             for mandi_id, lat, lng in missing_dests:
@@ -196,44 +205,57 @@ class DistanceService:
             "travelMode": "DRIVE",
         }
 
-        async with httpx.AsyncClient(timeout=self.timeout) as client:
-            resp = await client.post(url, json=body, headers=headers)
-            if resp.status_code != 200:
-                logger.warning(f"Google Routes API HTTP {resp.status_code}: {resp.text[:200]}")
-                return {}
+        try:
+            async with httpx.AsyncClient(timeout=httpx.Timeout(self.timeout, connect=0.6)) as client:
+                resp = await asyncio.wait_for(
+                    client.post(url, json=body, headers=headers),
+                    timeout=self.timeout,
+                )
+                if resp.status_code != 200:
+                    logger.warning(f"Google Routes API HTTP {resp.status_code}: {resp.text[:200]}")
+                    if resp.status_code == 403:
+                        import time
+                        DistanceService._circuit_breaker_disabled_until = time.time() + 60.0
+                    return {}
 
-            elements = self._parse_routes_response(resp.text)
-            if not elements:
-                return {}
+                elements = self._parse_routes_response(resp.text)
+                if not elements:
+                    return {}
 
-            out: Dict[int, DistanceResult] = {}
-            for item in elements:
-                # Handle per-element failures
-                status_obj = item.get("status")
-                if status_obj and isinstance(status_obj, dict) and status_obj.get("code", 0) != 0:
-                    continue
-                condition = item.get("condition")
-                if condition == "ROUTE_NOT_FOUND":
-                    continue
+                out: Dict[int, DistanceResult] = {}
+                for item in elements:
+                    # Handle per-element failures
+                    status_obj = item.get("status")
+                    if status_obj and isinstance(status_obj, dict) and status_obj.get("code", 0) != 0:
+                        continue
+                    condition = item.get("condition")
+                    if condition == "ROUTE_NOT_FOUND":
+                        continue
 
-                dest_idx = item.get("destinationIndex")
-                if dest_idx is not None and 0 <= dest_idx < len(destinations):
-                    mandi_id = destinations[dest_idx][0]
-                    dist_meters = item.get("distanceMeters")
-                    duration_str = item.get("duration", "0s")
-                    if dist_meters is not None:
-                        road_km = dist_meters / 1000.0
-                        dur_sec = parse_duration_seconds(duration_str)
-                        dur_min = dur_sec / 60.0
-                        out[mandi_id] = DistanceResult(
-                            mandi_id=mandi_id,
-                            road_km=round(road_km, 2),
-                            duration_min=round(dur_min, 1),
-                            source="routes_api",
-                            cache_hit=False,
-                        )
+                    dest_idx = item.get("destinationIndex")
+                    if dest_idx is not None and 0 <= dest_idx < len(destinations):
+                        mandi_id = destinations[dest_idx][0]
+                        dist_meters = item.get("distanceMeters")
+                        duration_str = item.get("duration", "0s")
+                        if dist_meters is not None:
+                            road_km = dist_meters / 1000.0
+                            dur_sec = parse_duration_seconds(duration_str)
+                            dur_min = dur_sec / 60.0
+                            out[mandi_id] = DistanceResult(
+                                mandi_id=mandi_id,
+                                road_km=round(road_km, 2),
+                                duration_min=round(dur_min, 1),
+                                source="routes_api",
+                                cache_hit=False,
+                            )
 
-            return out
+                return out
+        except (asyncio.TimeoutError, httpx.TimeoutException):
+            logger.warning(f"Google Routes API timed out after {self.timeout}s. Using haversine fallback.")
+            return {}
+        except Exception as e:
+            logger.warning(f"Google Routes API exception ({type(e).__name__}): {e}")
+            return {}
 
     def _parse_routes_response(self, text: str) -> List[Dict[str, Any]]:
         """Parse Google Routes API response, supporting JSON array or streamed JSON objects."""
