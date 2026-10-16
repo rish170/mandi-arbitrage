@@ -1,0 +1,46 @@
+{
+  "crops": [
+    {
+      "id": "wheat",
+      "name_en": "Wheat",
+      "name_hi": "गेहूं",
+      "aliases": ["Wheat", "Gehun"]
+    },
+    {
+      "id": "rice_paddy",
+      "name_en": "Rice (Paddy)",
+      "name_hi": "चावल (धान)",
+      "aliases": ["Paddy(Dhan)", "Rice", "Dhan", "Paddy"]
+    },
+    {
+      "id": "soyabean",
+      "name_en": "Soyabean",
+      "name_hi": "सोयाबीन",
+      "aliases": ["Soyabean", "Soybean"]
+    },
+    {
+      "id": "cotton",
+      "name_en": "Cotton",
+      "name_hi": "कपास",
+      "aliases": ["Cotton", "Kapas"]
+    },
+    {
+      "id": "onion",
+      "name_en": "Onion",
+      "name_hi": "प्याज",
+      "aliases": ["Onion", "Pyaz"]
+    },
+    {
+      "id": "potato",
+      "name_en": "Potato",
+      "name_hi": "आलू",
+      "aliases": ["Potato", "Aloo"]
+    },
+    {
+      "id": "tomato",
+      "name_en": "Tomato",
+      "name_hi": "टमाटर",
+      "aliases": ["Tomato", "Tamatar"]
+    }
+  ]
+}

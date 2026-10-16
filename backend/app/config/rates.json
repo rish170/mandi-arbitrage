@@ -1,0 +1,59 @@
+{
+  "status": "ASSUMPTION_UNVERIFIED",
+  "note": "Placeholder default values. No field survey has been conducted. Clearly flagged everywhere in UI and docs.",
+  "market_fee_pct_default": 1.0,
+  "commission_pct_default": 2.0,
+  "state_overrides": {
+    "Maharashtra": {
+      "market_fee_pct": 1.05,
+      "commission_pct": 2.0
+    }
+  },
+  "vehicles": {
+    "tempo": {
+      "name": "Tempo",
+      "capacity_quintals": 8,
+      "rate_per_km": 14.0
+    },
+    "pickup": {
+      "name": "Pickup",
+      "capacity_quintals": 15,
+      "rate_per_km": 18.0
+    },
+    "mini_truck": {
+      "name": "Mini Truck",
+      "capacity_quintals": 40,
+      "rate_per_km": 26.0
+    },
+    "truck": {
+      "name": "Truck",
+      "capacity_quintals": 100,
+      "rate_per_km": 38.0
+    }
+  },
+  "quality_grades": {
+    "Good": 0.0,
+    "FAQ": 0.0,
+    "Average": 5.0,
+    "Below Average": 10.0,
+    "Poor": 15.0
+  },
+  "custom_quality_cut_pct_range": {
+    "min": 0.0,
+    "max": 30.0
+  },
+  "other_charges_per_quintal": {
+    "loading_unloading": 3.0,
+    "weighing": 1.0
+  },
+  "fallback_distance": {
+    "road_factor": 1.3,
+    "average_speed_kmh": 40.0
+  },
+  "defaults": {
+    "price_basis": "modal",
+    "round_trip_factor": 1.0,
+    "include_other_charges": false,
+    "quantity_quintals": 10.0
+  }
+}
