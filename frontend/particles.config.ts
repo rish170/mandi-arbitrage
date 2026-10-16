@@ -51,11 +51,27 @@ export interface ParticlesConfig {
       resize: boolean;
     };
     modes: {
+      grab: {
+        distance: number;
+        line_linked: {
+          opacity: number;
+        };
+      };
+      bubble: {
+        distance: number;
+        size: number;
+        duration: number;
+        opacity: number;
+        speed: number;
+      };
       repulse: {
         distance: number;
         duration: number;
       };
       push: {
+        particles_nb: number;
+      };
+      remove: {
         particles_nb: number;
       };
     };
@@ -103,11 +119,11 @@ export const particlesConfig: ParticlesConfig = {
     },
   },
   interactivity: {
-    detect_on: "window",
+    detect_on: "canvas",
     events: {
       onhover: {
         enable: true,
-        mode: "repulse",
+        mode: "grab",
       },
       onclick: {
         enable: true,
@@ -116,12 +132,28 @@ export const particlesConfig: ParticlesConfig = {
       resize: true,
     },
     modes: {
+      grab: {
+        distance: 140,
+        line_linked: {
+          opacity: 1,
+        },
+      },
+      bubble: {
+        distance: 400,
+        size: 40,
+        duration: 2,
+        opacity: 8,
+        speed: 3,
+      },
       repulse: {
-        distance: 110,
+        distance: 200,
         duration: 0.4,
       },
       push: {
-        particles_nb: 3,
+        particles_nb: 4,
+      },
+      remove: {
+        particles_nb: 2,
       },
     },
   },

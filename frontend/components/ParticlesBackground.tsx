@@ -6,6 +6,7 @@ import {
   calculateDensityCount,
   createParticle,
   calculateRepulse,
+  calculateGrab,
   updateParticlePosition,
   computeDistance,
   ParticleState,
@@ -102,26 +103,35 @@ export function ParticlesBackground() {
     };
 
     const handleClick = (e: MouseEvent) => {
-      const pushCount = particlesConfig.interactivity.modes.push.particles_nb;
-      for (let i = 0; i < pushCount; i++) {
-        const newParticle = createParticle(
-          particles.length + i,
-          width,
-          height,
-          particlesConfig.particles.move.speed,
-          particlesConfig.particles.size.value,
-          particlesConfig.particles.size.random,
-          particlesConfig.particles.opacity.value,
-          particlesConfig.particles.opacity.random
-        );
-        newParticle.x = e.clientX + (Math.random() * 20 - 10);
-        newParticle.y = e.clientY + (Math.random() * 20 - 10);
-        particles.push(newParticle);
-      }
-      // Keep within mobile/desktop ceiling
-      const maxAllowed = width < 768 ? 40 : 120;
-      if (particles.length > maxAllowed) {
-        particles = particles.slice(particles.length - maxAllowed);
+      if (!particlesConfig.interactivity.events.onclick.enable) return;
+      const clickMode = particlesConfig.interactivity.events.onclick.mode;
+
+      if (clickMode === "push") {
+        const pushCount = particlesConfig.interactivity.modes.push.particles_nb;
+        for (let i = 0; i < pushCount; i++) {
+          const newParticle = createParticle(
+            particles.length + i,
+            width,
+            height,
+            particlesConfig.particles.move.speed,
+            particlesConfig.particles.size.value,
+            particlesConfig.particles.size.random,
+            particlesConfig.particles.opacity.value,
+            particlesConfig.particles.opacity.random
+          );
+          newParticle.x = e.clientX + (Math.random() * 20 - 10);
+          newParticle.y = e.clientY + (Math.random() * 20 - 10);
+          particles.push(newParticle);
+        }
+        // Keep within mobile/desktop ceiling
+        const maxAllowed = width < 768 ? 40 : 120;
+        if (particles.length > maxAllowed) {
+          particles = particles.slice(particles.length - maxAllowed);
+        }
+      } else if (clickMode === "remove") {
+        const removeCount =
+          particlesConfig.interactivity.modes.remove?.particles_nb ?? 2;
+        particles = particles.slice(0, Math.max(5, particles.length - removeCount));
       }
     };
 
@@ -141,7 +151,6 @@ export function ParticlesBackground() {
     const renderFrame = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const repulseDist = particlesConfig.interactivity.modes.repulse.distance;
       const lineDist = particlesConfig.particles.line_linked.distance;
 
       // Draw linked lines between nearby particles
@@ -165,22 +174,63 @@ export function ParticlesBackground() {
         }
       }
 
-      // Draw particles and update with repulse
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
+      // Mouse hover interactivity: Grab mode (lines connecting cursor to nearby particles)
+      const hoverEnabled = particlesConfig.interactivity.events.onhover.enable;
+      const hoverMode = particlesConfig.interactivity.events.onhover.mode;
 
-        if (!prefersReducedMotion) {
-          // Repulse
-          const { dx, dy, repulsed } = calculateRepulse(
+      if (
+        hoverEnabled &&
+        hoverMode === "grab" &&
+        mouseX !== null &&
+        mouseY !== null &&
+        !prefersReducedMotion
+      ) {
+        const grabDist = particlesConfig.interactivity.modes.grab?.distance ?? 140;
+        const grabOpacity =
+          particlesConfig.interactivity.modes.grab?.line_linked.opacity ?? 1;
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const { grabbed, alpha } = calculateGrab(
             p.x,
             p.y,
             mouseX,
             mouseY,
-            repulseDist
+            grabDist,
+            grabOpacity
           );
-          if (repulsed) {
-            p = { ...p, x: p.x + dx, y: p.y + dy };
+          if (grabbed) {
+            ctx.lineWidth = particlesConfig.particles.line_linked.width;
+            ctx.strokeStyle = particleLineColor;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouseX, mouseY);
+            ctx.stroke();
           }
+        }
+      }
+
+      // Draw particles and update positions
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+
+        if (!prefersReducedMotion) {
+          if (hoverEnabled && hoverMode === "repulse") {
+            const repulseDist =
+              particlesConfig.interactivity.modes.repulse.distance;
+            const { dx, dy, repulsed } = calculateRepulse(
+              p.x,
+              p.y,
+              mouseX,
+              mouseY,
+              repulseDist
+            );
+            if (repulsed) {
+              p = { ...p, x: p.x + dx, y: p.y + dy };
+            }
+          }
+
           // Move
           p = updateParticlePosition(
             p,

@@ -3,6 +3,7 @@ import {
   calculateDensityCount,
   createParticle,
   calculateRepulse,
+  calculateGrab,
   updateParticlePosition,
   computeDistance,
 } from "@/lib/particles-core";
@@ -61,6 +62,29 @@ describe("Particles Core Logic", () => {
     expect(res.repulsed).toBe(false);
     expect(res.dx).toBe(0);
     expect(res.dy).toBe(0);
+  });
+
+  it("calculates grab line alpha when mouse is within grab distance", () => {
+    // Particle at (100, 100), mouse at (170, 100) -> distance 70 <= 140
+    const res = calculateGrab(100, 100, 170, 100, 140, 1.0);
+    expect(res.grabbed).toBe(true);
+    expect(res.distance).toBe(70);
+    expect(res.alpha).toBeCloseTo(0.5, 5);
+  });
+
+  it("returns grabbed: false and zero alpha when mouse is outside grab distance", () => {
+    // Particle at (100, 100), mouse at (300, 100) -> distance 200 > 140
+    const res = calculateGrab(100, 100, 300, 100, 140, 1.0);
+    expect(res.grabbed).toBe(false);
+    expect(res.alpha).toBe(0);
+    expect(res.distance).toBe(200);
+  });
+
+  it("handles null mouse coordinates gracefully without grabbing", () => {
+    const res = calculateGrab(100, 100, null, null, 140);
+    expect(res.grabbed).toBe(false);
+    expect(res.alpha).toBe(0);
+    expect(res.distance).toBe(0);
   });
 
   it("updates particle position and wraps boundaries in out_mode", () => {

@@ -103,6 +103,31 @@ export function calculateRepulse(
 }
 
 /**
+ * Pure grab calculation.
+ * When mouse is within grabDistance, computes whether the particle is grabbed and the line alpha.
+ */
+export function calculateGrab(
+  px: number,
+  py: number,
+  mx: number | null,
+  my: number | null,
+  grabDistance: number = 140,
+  maxOpacity: number = 1.0
+): { grabbed: boolean; alpha: number; distance: number } {
+  if (mx === null || my === null) {
+    return { grabbed: false, alpha: 0, distance: 0 };
+  }
+
+  const dist = Math.hypot(px - mx, py - my);
+  if (dist > 0 && dist <= grabDistance) {
+    const alpha = (1 - dist / grabDistance) * maxOpacity;
+    return { grabbed: true, alpha, distance: dist };
+  }
+
+  return { grabbed: false, alpha: 0, distance: dist };
+}
+
+/**
  * Updates a particle's position and wraps edges when out_mode is "out".
  */
 export function updateParticlePosition(
