@@ -1,0 +1,69 @@
+{
+  "brand": {
+    "name": "Mandi Arbitrage Advisor",
+    "tagline": "Compare mandi prices after transport and statutory deductions to find your highest net profit."
+  },
+  "nav": {
+    "home": "Home",
+    "methodology": "Methodology",
+    "apiDocs": "API Docs"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "lang": {
+    "selectLang": "Select language",
+    "en": "English",
+    "hi": "हिंदी"
+  },
+  "crops": {
+    "wheat": "Wheat",
+    "rice": "Rice (Paddy)",
+    "soyabean": "Soyabean",
+    "cotton": "Cotton",
+    "onion": "Onion",
+    "potato": "Potato",
+    "tomato": "Tomato"
+  },
+  "vehicles": {
+    "tempo": "Tempo (8 q)",
+    "pickup": "Pickup (15 q)",
+    "mini_truck": "Mini Truck (40 q)",
+    "truck": "Truck (100 q)"
+  },
+  "quality": {
+    "good": "Good (FAQ)",
+    "average": "Average (-5%)",
+    "below_average": "Below Average (-10%)",
+    "poor": "Poor (-15%)",
+    "custom": "Custom Cut %"
+  },
+  "search": {
+    "pincode": "6-digit Pincode",
+    "quantity": "Quantity (Quintals)",
+    "crop": "Crop",
+    "vehicle": "Transport Vehicle",
+    "quality": "Quality Grade",
+    "submit": "Calculate Net Profit",
+    "loading": "Comparing mandis..."
+  },
+  "results": {
+    "bestMandi": "Best Mandi",
+    "nearestMandi": "Nearest Mandi",
+    "extraProfit": "Extra Net Profit",
+    "distance": "Road Distance",
+    "grossPrice": "Modal Price",
+    "netRealization": "Net Realization",
+    "transportCost": "Transport Cost",
+    "mandiFee": "APMC Fee & Cess",
+    "breakdown": "Cost Breakdown",
+    "trend": "7-Day Price Trend"
+  },
+  "footer": {
+    "disclaimer": "Prices shown are indicative modal auction rates from data.gov.in.",
+    "dataSource": "Data Source: data.gov.in (Agmarknet Daily Arrivals)",
+    "apiDocs": "API Documentation",
+    "methodology": "How Calculations Work"
+  }
+}

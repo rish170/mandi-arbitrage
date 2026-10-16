@@ -43,6 +43,9 @@ function hexToHsl(hex) {
 }
 
 const HEX_REGEX = /#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b/g;
+const FORBIDDEN_CLASS_REGEX =
+  /\b(?:bg|text|border|ring|stroke|fill|from|to|via)-(?:blue|indigo|purple|violet|pink|cyan|teal|fuchsia|sky|magenta)(?:-\d+)?\b/g;
+const GRADIENT_TEXT_REGEX = /\b(bg-clip-text|text-transparent)\b/g;
 
 function scanDir(dir, errors) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -69,6 +72,7 @@ function scanDir(dir, errors) {
       const content = fs.readFileSync(fullPath, "utf-8");
       const lines = content.split("\n");
       lines.forEach((line, lineIdx) => {
+        // 1. Check Hex Hues
         let match;
         while ((match = HEX_REGEX.exec(line)) !== null) {
           const hex = match[0];
@@ -79,11 +83,29 @@ function scanDir(dir, errors) {
               errors.push({
                 file: fullPath,
                 line: lineIdx + 1,
-                hex,
-                hue: Math.round(hsl.h),
-                saturation: Math.round(hsl.s),
+                reason: `Hex ${hex} has forbidden hue ${Math.round(hsl.h)}° (190°-340°)`,
               });
             }
+          }
+        }
+
+        // 2. Check Forbidden Tailwind Color Classes (ignore check tests if any)
+        if (!fullPath.includes("__tests__")) {
+          while ((match = FORBIDDEN_CLASS_REGEX.exec(line)) !== null) {
+            errors.push({
+              file: fullPath,
+              line: lineIdx + 1,
+              reason: `Forbidden Tailwind color class: "${match[0]}"`,
+            });
+          }
+
+          // 3. Check Forbidden Gradient-Text Patterns
+          while ((match = GRADIENT_TEXT_REGEX.exec(line)) !== null) {
+            errors.push({
+              file: fullPath,
+              line: lineIdx + 1,
+              reason: `Forbidden gradient-text pattern: "${match[0]}"`,
+            });
           }
         }
       });
@@ -96,14 +118,14 @@ scanDir(process.cwd(), errors);
 
 if (errors.length > 0) {
   console.error(
-    `\nPalette check FAILED: Found ${errors.length} forbidden colors (hue between 190° and 340°):`
+    `\nDesign Palette Check FAILED: Found ${errors.length} forbidden items:`
   );
   errors.forEach((e) => {
-    console.error(
-      `  ${e.file}:${e.line} -> ${e.hex} (Hue: ${e.hue}°, Saturation: ${e.saturation}%)`
-    );
+    console.error(`  ${e.file}:${e.line} -> ${e.reason}`);
   });
   process.exit(1);
 } else {
-  console.log("\nPalette check PASSED: No forbidden hues (190° - 340°) found.");
+  console.log(
+    "\nPalette check PASSED: No forbidden hues (190° - 340°), forbidden classes, or gradient-text patterns found."
+  );
 }

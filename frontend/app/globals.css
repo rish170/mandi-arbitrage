@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #FFFFFF;
+  --ink: #1B2A1F;
+  --ink-muted: #56685A;
+  --forest: #1F5C3B;
+  --forest-strong: #174A2F;
+  --wheat: #C9962B;
+  --wheat-ink: #8A6414;
+  --clay: #B4532A;
+  --soil: #6B4F3A;
+  --particle: #3F9B5A;
+  --particle-line: rgba(63, 155, 90, 0.35);
+  --glass-fill: rgba(244, 248, 242, 0.58);
+  --glass-strong: rgba(250, 252, 248, 0.82);
+  --glass-border: rgba(31, 92, 59, 0.16);
+  --glass-hilite: rgba(255, 255, 255, 0.90);
+  --shadow: 0 8px 32px rgba(23, 74, 47, 0.10), 0 1px 2px rgba(23, 74, 47, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark, html.dark {
+  --bg: #000000;
+  --ink: #EAF2E8;
+  --ink-muted: #97A89B;
+  --forest: #58B874;
+  --forest-strong: #7CCF94;
+  --wheat: #E2B54F;
+  --wheat-ink: #E2B54F;
+  --clay: #E0805A;
+  --soil: #A98B72;
+  --particle: #4FB26A;
+  --particle-line: rgba(79, 178, 106, 0.30);
+  --glass-fill: rgba(255, 255, 255, 0.07);
+  --glass-strong: rgba(20, 26, 21, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-hilite: rgba(255, 255, 255, 0.28);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.60);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-forest: var(--forest);
+  --color-forest-strong: var(--forest-strong);
+  --color-wheat: var(--wheat);
+  --color-wheat-ink: var(--wheat-ink);
+  --color-clay: var(--clay);
+  --color-soil: var(--soil);
+  --color-particle: var(--particle);
+  --color-glass-fill: var(--glass-fill);
+  --color-glass-strong: var(--glass-strong);
+  --color-glass-border: var(--glass-border);
+  --color-glass-hilite: var(--glass-hilite);
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-hanken), sans-serif;
+  --font-hindi: var(--font-noto-sans-devanagari), sans-serif;
+  --font-hindi-serif: var(--font-noto-serif-devanagari), serif;
+}
+
+/* Base elements & resets */
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  accent-color: var(--forest);
+  caret-color: var(--forest);
+  scrollbar-color: var(--forest) var(--bg);
+  scrollbar-width: thin;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: var(--forest);
+  color: #FFFFFF;
+}
+
+.dark ::selection, html.dark ::selection {
+  background-color: var(--forest-strong);
+  color: #000000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--wheat);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--forest);
+  border-radius: 4px;
+}
+
+/* Liquid Glass Recipe */
+.glass {
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: var(--shadow), inset 0 1px 0 var(--glass-hilite), inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 40%);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.dark .glass::before, html.dark .glass::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 40%);
+}
+
+.glass:hover {
+  transform: translateY(-1px) scale(1.005);
+}
+
+/* Liquid Glass Strong (table rows, inputs, modals) */
+.glass-strong {
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow), inset 0 1px 0 var(--glass-hilite), inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0) 40%);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.dark .glass-strong::before, html.dark .glass-strong::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0) 40%);
+}
+
+/* Liquid Glass Pill */
+.glass-pill {
+  border-radius: 9999px !important;
+}
+
+/* Reduced transparency and unsupported backdrop-filter fallbacks */
+@supports not ((-webkit-backdrop-filter: blur(24px)) or (backdrop-filter: blur(24px))) {
+  .glass {
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-transparency: reduce) {
+  .glass, .glass-strong {
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Concentric radii helper */
+.card-inner-input {
+  border-radius: 20px;
+}
+
+/* Tabular numerals for money columns */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
