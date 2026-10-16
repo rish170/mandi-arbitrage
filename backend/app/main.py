@@ -48,7 +48,10 @@ app = FastAPI(
 app.state.limiter = limiter
 
 # CORS middleware
-origins = [settings.FRONTEND_ORIGIN]
+origins = [o.strip() for o in settings.FRONTEND_ORIGIN.split(",") if o.strip()]
+for domain in ["https://mandi-arbitrage.vercel.app", "https://mandi-arbitrage-rishab-thuthejas-projects.vercel.app"]:
+    if domain not in origins:
+        origins.append(domain)
 if settings.ENV != "production":
     origins.extend(["http://localhost:3000", "http://127.0.0.1:3000"])
 
