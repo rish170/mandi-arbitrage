@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --bg: #FFFFFF;
   --ink: #1B2A1F;
@@ -17,6 +19,7 @@
   --glass-border: rgba(31, 92, 59, 0.16);
   --glass-hilite: rgba(255, 255, 255, 0.90);
   --shadow: 0 8px 32px rgba(23, 74, 47, 0.10), 0 1px 2px rgba(23, 74, 47, 0.08);
+  --submit-btn-color: #000000;
 }
 
 .dark, html.dark {
@@ -36,6 +39,7 @@
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-hilite: rgba(255, 255, 255, 0.28);
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.60);
+  --submit-btn-color: #FFFFFF;
 }
 
 @theme {
@@ -163,6 +167,20 @@ body {
 /* Liquid Glass Pill */
 .glass-pill {
   border-radius: 9999px !important;
+}
+
+/* Submit button explicit text contrast */
+.btn-submit {
+  color: var(--submit-btn-color, #000000) !important;
+}
+.btn-submit span {
+  color: var(--submit-btn-color, #000000) !important;
+}
+.dark .btn-submit,
+html.dark .btn-submit,
+.dark .btn-submit span,
+html.dark .btn-submit span {
+  color: #FFFFFF !important;
 }
 
 /* Reduced transparency and unsupported backdrop-filter fallbacks */
