@@ -623,11 +623,11 @@ export function SearchPanel({ onSearch, isLoading = false }: SearchPanelProps) {
       <button
         type="submit"
         disabled={isLoading}
-        className="glass glass-pill bg-forest hover:bg-forest-strong text-white font-semibold py-3 px-6 text-sm tracking-wide shadow-md transition-all duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+        className="glass glass-pill bg-forest hover:bg-forest-strong text-black dark:text-white font-semibold py-3 px-6 text-sm tracking-wide shadow-md transition-all duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" />
+            <Loader2 className="w-4 h-4 animate-spin text-black dark:text-white" />
             <span>{t("search.loading")}</span>
           </>
         ) : (
