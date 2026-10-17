@@ -95,7 +95,7 @@ export const particlesConfig: ParticlesConfig = {
       type: "circle",
     },
     opacity: {
-      value: 0.5,
+      value: 0.7,
       random: true,
     },
     size: {
@@ -106,7 +106,7 @@ export const particlesConfig: ParticlesConfig = {
       enable: true,
       distance: 150,
       color: "--particle-line",
-      opacity: 0.35,
+      opacity: 0.45,
       width: 1,
     },
     move: {

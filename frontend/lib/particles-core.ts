@@ -57,7 +57,7 @@ export function createParticle(
     : sizeValue;
 
   const opacity = opacityRandom
-    ? Math.max(0.15, Math.random() * opacityValue)
+    ? Math.max(0.35, Math.random() * opacityValue)
     : opacityValue;
 
   return {

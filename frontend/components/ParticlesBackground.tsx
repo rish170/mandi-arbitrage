@@ -29,8 +29,8 @@ export function ParticlesBackground() {
     let height = window.innerHeight;
 
     // Cache theme colors from CSS variables
-    let particleColor = "#3F9B5A";
-    let particleLineColor = "rgba(63, 155, 90, 0.35)";
+    let particleColor = "#16A34A";
+    let particleLineColor = "rgba(22, 163, 74, 0.45)";
 
     const updateThemeColors = () => {
       const styles = getComputedStyle(document.documentElement);
@@ -55,8 +55,10 @@ export function ParticlesBackground() {
       width = window.innerWidth;
       height = window.innerHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const targetCount = calculateDensityCount(
@@ -91,10 +93,13 @@ export function ParticlesBackground() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    // Window-level mouse interactivity
+    // Window-level mouse interactivity with canvas bounding rect correction
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = rect.width > 0 ? width / rect.width : 1;
+      const scaleY = rect.height > 0 ? height / rect.height : 1;
+      mouseX = (e.clientX - rect.left) * scaleX;
+      mouseY = (e.clientY - rect.top) * scaleY;
     };
 
     const handleMouseLeave = () => {
@@ -105,6 +110,12 @@ export function ParticlesBackground() {
     const handleClick = (e: MouseEvent) => {
       if (!particlesConfig.interactivity.events.onclick.enable) return;
       const clickMode = particlesConfig.interactivity.events.onclick.mode;
+
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = rect.width > 0 ? width / rect.width : 1;
+      const scaleY = rect.height > 0 ? height / rect.height : 1;
+      const clickX = (e.clientX - rect.left) * scaleX;
+      const clickY = (e.clientY - rect.top) * scaleY;
 
       if (clickMode === "push") {
         const pushCount = particlesConfig.interactivity.modes.push.particles_nb;
@@ -119,8 +130,8 @@ export function ParticlesBackground() {
             particlesConfig.particles.opacity.value,
             particlesConfig.particles.opacity.random
           );
-          newParticle.x = e.clientX + (Math.random() * 20 - 10);
-          newParticle.y = e.clientY + (Math.random() * 20 - 10);
+          newParticle.x = clickX + (Math.random() * 20 - 10);
+          newParticle.y = clickY + (Math.random() * 20 - 10);
           particles.push(newParticle);
         }
         // Keep within mobile/desktop ceiling
@@ -201,7 +212,7 @@ export function ParticlesBackground() {
           );
           if (grabbed) {
             ctx.lineWidth = particlesConfig.particles.line_linked.width;
-            ctx.strokeStyle = particleLineColor;
+            ctx.strokeStyle = particleColor;
             ctx.globalAlpha = alpha;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -294,7 +305,8 @@ export function ParticlesBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none -z-10"
+      className="fixed inset-0 w-full h-full pointer-events-none -z-10"
+      style={{ width: "100%", height: "100%" }}
       aria-hidden="true"
     />
   );
