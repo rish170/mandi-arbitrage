@@ -79,15 +79,32 @@ async def get_latest_prices_for_mandis(
             select(Price)
             .where(
                 Price.mandi_id.in_(missing_ids),
-                Price.commodity == commodity,
+                func.lower(Price.commodity) == commodity.lower(),
                 Price.arrival_date >= min_date,
             )
             .order_by(Price.mandi_id, Price.arrival_date.desc())
         )
         if variety:
-            stmt = stmt.where(Price.variety == variety)
+            stmt = stmt.where(func.lower(Price.variety) == variety.lower())
 
         results = (await db.execute(stmt)).scalars().all()
+
+        # Fallback if some mandis have prices older than min_date
+        found_mandi_ids = {p.mandi_id for p in results}
+        unresolved_ids = [mid for mid in missing_ids if mid not in found_mandi_ids]
+        if unresolved_ids:
+            fallback_stmt = (
+                select(Price)
+                .where(
+                    Price.mandi_id.in_(unresolved_ids),
+                    func.lower(Price.commodity) == commodity.lower(),
+                )
+                .order_by(Price.mandi_id, Price.arrival_date.desc())
+            )
+            if variety:
+                fallback_stmt = fallback_stmt.where(func.lower(Price.variety) == variety.lower())
+            fallback_results = (await db.execute(fallback_stmt)).scalars().all()
+            results = list(results) + list(fallback_results)
 
         # Group prices by mandi_id -> list of prices on the LATEST arrival_date for that mandi
         mandi_latest_map: Dict[int, List[Price]] = {}
@@ -103,7 +120,7 @@ async def get_latest_prices_for_mandis(
         for mid, prices_list in mandi_latest_map.items():
             latest_date = prices_list[0].arrival_date
             age_days = (ref_date - latest_date).days
-            is_stale = 2 <= age_days <= max_age_days
+            is_stale = age_days >= 2
 
             varieties_used = len(prices_list)
             # Average modal price
@@ -165,6 +182,28 @@ async def get_trend_for_mandis(
         .order_by(Price.mandi_id, Price.arrival_date.asc())
     )
     records = (await db.execute(stmt)).scalars().all()
+
+    # If no records in current window, anchor to latest arrival date for these mandis
+    if not records and mandi_ids:
+        stmt_max = select(func.max(Price.arrival_date)).where(
+            Price.mandi_id.in_(mandi_ids),
+            func.lower(Price.commodity) == commodity.lower(),
+        )
+        max_d = (await db.execute(stmt_max)).scalar_one_or_none()
+        if max_d:
+            ref_date = max_d
+            start_date = ref_date - timedelta(days=days - 1)
+            stmt = (
+                select(Price)
+                .where(
+                    Price.mandi_id.in_(mandi_ids),
+                    func.lower(Price.commodity) == commodity.lower(),
+                    Price.arrival_date >= start_date,
+                    Price.arrival_date <= ref_date,
+                )
+                .order_by(Price.mandi_id, Price.arrival_date.asc())
+            )
+            records = (await db.execute(stmt)).scalars().all()
 
     # Index by (mandi_id, arrival_date) -> Price
     price_map: Dict[Tuple[int, date], Price] = {}

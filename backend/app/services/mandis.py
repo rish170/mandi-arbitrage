@@ -127,4 +127,29 @@ async def get_candidate_mandis(
             if len(candidates) >= limit:
                 break
 
+    # 4. Graceful fallback: If no mandis have prices within max_age_days (e.g. data feed delay,
+    # weekend, holiday, or upstream API latency), fall back to the latest recorded price
+    # for each candidate mandi within the radius.
+    if not candidates:
+        logger.info(
+            f"No prices within {max_age_days} days for {commodity}. Falling back to latest available historical prices."
+        )
+        for mandi, dist in mandi_distances:
+            price_stmt = (
+                select(Price)
+                .where(
+                    Price.mandi_id == mandi.id,
+                    func.lower(Price.commodity) == commodity.lower(),
+                )
+                .order_by(Price.arrival_date.desc(), Price.id.desc())
+                .limit(1)
+            )
+            price_res = await db.execute(price_stmt)
+            price = price_res.scalar_one_or_none()
+
+            if price:
+                candidates.append((mandi, price, dist))
+                if len(candidates) >= limit:
+                    break
+
     return candidates

@@ -321,10 +321,13 @@ async def compare_mandis(
         )
 
     if has_stale_price:
-        add_warning(
-            "STALE_PRICE",
-            "One or more mandis report price data that is 2 to 3 days old.",
+        max_age = max((p.age_days for _, _, p in selected_candidates), default=0)
+        msg = (
+            f"Using latest recorded prices ({max_age} days old) as real-time APMC updates are currently delayed."
+            if max_age > 3
+            else "One or more mandis report price data that is 2 to 3 days old."
         )
+        add_warning("STALE_PRICE", msg)
 
     # 10. Rank and summarize
     ranked_results, summary_info = rank_and_summarize(

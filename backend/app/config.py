@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     ADMIN_TOKEN: str = "mandi_local_admin_dev_token_2026"
     FRONTEND_ORIGIN: str = "http://localhost:3000"
     MAX_RADIUS_KM: int = 150
-    PRICE_MAX_AGE_DAYS: int = 3
+    PRICE_MAX_AGE_DAYS: int = 14
     TREND_DAYS: int = 7
     DISABLE_RATE_LIMIT: bool = False
 

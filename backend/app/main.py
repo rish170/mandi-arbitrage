@@ -49,11 +49,14 @@ app.state.limiter = limiter
 
 # CORS middleware
 origins = [o.strip() for o in settings.FRONTEND_ORIGIN.split(",") if o.strip()]
-for domain in ["https://mandi-arbitrage.vercel.app", "https://mandi-arbitrage-rishab-thuthejas-projects.vercel.app"]:
+for domain in [
+    "https://mandi-arbitrage.vercel.app",
+    "https://mandi-arbitrage-rishab-thuthejas-projects.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]:
     if domain not in origins:
         origins.append(domain)
-if settings.ENV != "production":
-    origins.extend(["http://localhost:3000", "http://127.0.0.1:3000"])
 
 app.add_middleware(
     CORSMiddleware,
